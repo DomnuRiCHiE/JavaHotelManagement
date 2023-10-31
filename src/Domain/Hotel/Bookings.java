@@ -1,11 +1,12 @@
 package Domain.Hotel;
 
+import Domain.Payment;
 import Domain.PaymentMethod;
 import Domain.People.Client;
 
 import java.util.ArrayList;
 
-public class Bookings {
+public class Bookings implements Payment {
     private String ID;
     private Client client;
     private ArrayList<Room> bookedRooms;
@@ -43,5 +44,14 @@ public class Bookings {
 
     public void setPaymentMethod(PaymentMethod paymentMethod) {
         this.paymentMethod = paymentMethod;
+    }
+
+    @Override
+    public double calculateTotalCost() {
+        double sum = 0;
+        for (Room room : this.bookedRooms){
+            sum += room.getPrice();
+        }
+        return sum;
     }
 }
