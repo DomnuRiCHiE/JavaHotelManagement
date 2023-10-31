@@ -1,5 +1,0 @@
-package Domain.Restaurant;
-
-public enum BeverageType {
-    WATER, SOFT_DRINKS, TEA, COFFEE, BEER, ALCOHOLIC_COCKTAILS, NON_ALCOHOLIC_COCKTAILS, SPIRITS
-}
