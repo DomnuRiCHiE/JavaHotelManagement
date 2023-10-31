@@ -1,5 +1,5 @@
 package Domain.Hotel;
 
-public class Bookings {
+public class Booking {
 
 }
