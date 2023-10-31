@@ -1,5 +1,5 @@
 package Domain.Restaurant;
 
-public class Beverages {
+public class Beverage {
 
 }
