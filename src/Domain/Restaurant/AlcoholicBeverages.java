@@ -1,6 +1,6 @@
 package Domain.Restaurant;
 
-public class AlcoholicBeverages extends Beverages{
+public class AlcoholicBeverages extends Beverage{
     private int alcoholPercentage;
 
     public AlcoholicBeverages(String name, double price, String description, int volume, int alcoholPercentage) {
