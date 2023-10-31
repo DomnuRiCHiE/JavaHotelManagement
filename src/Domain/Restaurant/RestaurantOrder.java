@@ -58,4 +58,15 @@ public class RestaurantOrder implements Payment {
         RestaurantOrder that = (RestaurantOrder) o;
         return Objects.equals(ID, that.ID);
     }
+
+    @Override
+    public double calculateTotalCost() {
+        double totalSum = 0;
+
+        for(Item item: this.items) {
+            totalSum += item.getPrice();
+        }
+
+        return totalSum;
+    }
 }
