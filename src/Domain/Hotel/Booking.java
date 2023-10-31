@@ -6,13 +6,13 @@ import Domain.People.Client;
 
 import java.util.ArrayList;
 
-public class Bookings implements Payment {
+public class Booking implements Payment {
     private String ID;
     private Client client;
     private ArrayList<Room> bookedRooms;
     private PaymentMethod paymentMethod;
 
-    public Bookings() {}
+    public Booking() {}
 
     public String getID() {
         return ID;

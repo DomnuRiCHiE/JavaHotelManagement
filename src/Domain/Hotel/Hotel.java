@@ -10,7 +10,7 @@ public class Hotel {
     private static Hotel instance;
     private String name;
     private Restaurant restaurant;
-    private ArrayList<Bookings> bookings;
+    private ArrayList<Booking> booking;
     private ArrayList<Room> rooms;
     private ArrayList<Client> clients;
 
@@ -40,12 +40,12 @@ public class Hotel {
         this.restaurant = restaurant;
     }
 
-    public ArrayList<Bookings> getBookings() {
-        return bookings;
+    public ArrayList<Booking> getBookings() {
+        return booking;
     }
 
-    public void setBookings(ArrayList<Bookings> bookings) {
-        this.bookings = bookings;
+    public void setBookings(ArrayList<Booking> bookings) {
+        this.booking = booking;
     }
 
     public ArrayList<Room> getRooms() {
