@@ -5,7 +5,6 @@ import Repository.Restaurant.FoodRepository;
 import Controller.IController;
 import java.util.ArrayList;
 
-
 public class FoodController implements IController<Food> {
     private final FoodRepository foodRepository;
     private static FoodController instance;
