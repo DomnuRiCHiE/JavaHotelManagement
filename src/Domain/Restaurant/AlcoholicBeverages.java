@@ -1,5 +1,7 @@
 package Domain.Restaurant;
 
+import java.util.Objects;
+
 public class AlcoholicBeverages extends Beverage{
     private int alcoholPercentage;
 
@@ -21,5 +23,18 @@ public class AlcoholicBeverages extends Beverage{
         return "AlcoholicBeverages{" +
                 "alcoholPercentage=" + alcoholPercentage +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        AlcoholicBeverages that = (AlcoholicBeverages) o;
+        return alcoholPercentage == that.alcoholPercentage;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(alcoholPercentage);
     }
 }

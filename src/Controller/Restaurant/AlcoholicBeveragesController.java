@@ -26,8 +26,8 @@ public class AlcoholicBeveragesController implements IController<AlcoholicBevera
     }
 
     @Override
-    public void update(AlcoholicBeverages object) {
-        alcoholicBeverageRepository.update(object);
+    public void update(AlcoholicBeverages object1, AlcoholicBeverages object2) {
+        alcoholicBeverageRepository.update(object1, object2);
     }
 
     @Override

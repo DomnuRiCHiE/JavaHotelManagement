@@ -27,8 +27,8 @@ public class MenuController implements IController<Item> {
     }
 
     @Override
-    public void update(Item object) {
-        menuRepository.update(object);
+    public void update(Item object1, Item object2) {
+        menuRepository.update(object1, object2);
     }
 
     @Override

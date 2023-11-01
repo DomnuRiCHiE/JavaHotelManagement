@@ -36,10 +36,10 @@ public class BeverageRepository implements IRepository<Beverage> {
     }
 
     @Override
-    public void update(Beverage object) {
-        if(beverages.contains(object)) {
-            beverages.remove(object);
-            beverages.add(object);
+    public void update(Beverage object1, Beverage object2) {
+        if(beverages.contains(object1)) {
+            beverages.remove(object1);
+            beverages.add(object2);
         }
     }
 

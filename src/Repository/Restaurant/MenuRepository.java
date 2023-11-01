@@ -36,10 +36,10 @@ public class MenuRepository<Item> implements IRepository<Item> {
     }
 
     @Override
-    public void update(Item object) {
-        if(menuItems.contains(object)) {
-            menuItems.remove(object);
-            menuItems.add(object);
+    public void update(Item object1, Item object2) {
+        if(menuItems.contains(object1)) {
+            menuItems.remove(object1);
+            menuItems.add(object2);
         }
     }
 

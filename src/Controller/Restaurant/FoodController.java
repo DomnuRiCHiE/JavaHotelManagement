@@ -26,8 +26,8 @@ public class FoodController implements IController<Food> {
     }
 
     @Override
-    public void update(Food object) {
-        foodRepository.update(object);
+    public void update(Food object1, Food object2) {
+        foodRepository.update(object1, object2);
     }
 
     @Override

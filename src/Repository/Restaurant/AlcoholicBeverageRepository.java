@@ -11,13 +11,6 @@ public class AlcoholicBeverageRepository implements IRepository<AlcoholicBeverag
 
     private AlcoholicBeverageRepository() {
         alcoholicBeverages = new ArrayList<>();
-        AlcoholicBeverages alcoholicBeverage1 = new AlcoholicBeverages("Kronenburg blanc", 10, "Refreshing beer", 330, 5);
-        AlcoholicBeverages alcoholicBeverage2 = new AlcoholicBeverages("Guiness", 13, "Refreshing beer", 500, 7);
-        AlcoholicBeverages alcoholicBeverage3 = new AlcoholicBeverages("Glennfiddich", 15, "12 year aged scotch", 100, 35);
-
-        alcoholicBeverages.add(alcoholicBeverage1);
-        alcoholicBeverages.add(alcoholicBeverage2);
-        alcoholicBeverages.add(alcoholicBeverage3);
     }
 
     public static AlcoholicBeverageRepository getInstance() {
@@ -25,6 +18,10 @@ public class AlcoholicBeverageRepository implements IRepository<AlcoholicBeverag
             instance = new AlcoholicBeverageRepository();
         }
         return instance;
+    }
+
+    public int length() {
+        return alcoholicBeverages.size();
     }
 
 
@@ -36,10 +33,10 @@ public class AlcoholicBeverageRepository implements IRepository<AlcoholicBeverag
     }
 
     @Override
-    public void update(AlcoholicBeverages object) {
-        if(alcoholicBeverages.contains(object)) {
-            alcoholicBeverages.remove(object);
-            alcoholicBeverages.add(object);
+    public void update(AlcoholicBeverages object1, AlcoholicBeverages object2) {
+        if(alcoholicBeverages.contains(object1)) {
+            alcoholicBeverages.remove(object1);
+            alcoholicBeverages.add(object2);
         }
     }
 
@@ -52,6 +49,6 @@ public class AlcoholicBeverageRepository implements IRepository<AlcoholicBeverag
 
     @Override
     public ArrayList<AlcoholicBeverages> getAll() {
-        return new ArrayList<>();
+        return new ArrayList<>(alcoholicBeverages);
     }
 }

@@ -26,8 +26,8 @@ public class BeverageController implements IController<Beverage> {
     }
 
     @Override
-    public void update(Beverage object) {
-        beverageRepository.update(object);
+    public void update(Beverage object1, Beverage object2) {
+        beverageRepository.update(object1, object2);
     }
 
     @Override
