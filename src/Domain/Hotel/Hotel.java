@@ -14,8 +14,7 @@ public class Hotel {
     private ArrayList<Room> rooms;
     private ArrayList<Client> clients;
 
-    private Hotel() {
-    }
+    private Hotel() {}
 
     public static Hotel getInstance() {
         if (instance == null) {

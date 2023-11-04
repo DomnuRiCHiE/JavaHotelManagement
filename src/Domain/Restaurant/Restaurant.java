@@ -4,7 +4,9 @@ import java.util.ArrayList;
 
 public class Restaurant {
     private Menu<Item> menu;
-    private ArrayList<RestaurantOrder> orders = new ArrayList<>();
+    private ArrayList<RestaurantOrder> orders;
+
+    public Restaurant() {}
 
     public Restaurant(Menu<Item> menu, ArrayList<RestaurantOrder> orders) {
         this.menu = menu;
