@@ -19,11 +19,7 @@ class AlcoholicBeverageRepositoryTest {
     @org.junit.jupiter.api.Test
     void getInstance() {
         AlcoholicBeverageRepository alcoholicBeverageRepository2 = AlcoholicBeverageRepository.getInstance();
-        try {
-            assertNotEquals(alcoholicBeverageRepository, alcoholicBeverageRepository2);
-        } catch (AssertionFailedError e){
-            System.out.println("They are the same instance");
-        }
+        assertTrue(alcoholicBeverageRepository2 == alcoholicBeverageRepository );
     }
 
     @org.junit.jupiter.api.Test
