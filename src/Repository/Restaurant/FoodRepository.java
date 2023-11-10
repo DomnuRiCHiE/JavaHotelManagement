@@ -1,23 +1,13 @@
 package Repository.Restaurant;
 
 import Domain.Restaurant.Food;
-import Domain.Restaurant.FoodType;
-import Repository.IRepository;
-import java.util.ArrayList;
+import Repository.MainRepository;
 
-public class FoodRepository implements IRepository<Food> {
-    private final ArrayList<Food> foods;
+public class FoodRepository extends MainRepository<Food> {
     private static FoodRepository instance;
 
     private FoodRepository() {
-        foods = new ArrayList<>();
-        Food food1 = new Food("Tomato Soup", 10, "Refreshing bowl of soup", 300, FoodType.SOUP);
-        Food food2 = new Food("Mushroom Soup", 12, "Refreshing bowl of soup", 300, FoodType.SOUP);
-        Food food3 = new Food("Wagyu Steak", 50, "Pan fried chunk of meat", 200, FoodType.MEAT);
-
-        foods.add(food1);
-        foods.add(food2);
-        foods.add(food3);
+        super();
     }
 
     public static FoodRepository getInstance() {
@@ -26,32 +16,8 @@ public class FoodRepository implements IRepository<Food> {
         }
         return instance;
     }
-
-
-    @Override
-    public void add(Food object) {
-        if(!foods.contains(object)) {
-            foods.add(object);
-        }
-    }
-
-    @Override
-    public void update(Food object1, Food object2) {
-        if(foods.contains(object1)) {
-            foods.remove(object1);
-            foods.add(object2);
-        }
-    }
-
-    @Override
-    public void delete(Food object) {
-        if(foods.contains(object)) {
-            foods.remove(object);
-        }
-    }
-
-    @Override
-    public ArrayList<Food> getAll() {
-        return new ArrayList<>(foods);
-    }
 }
+
+//Food food1 = new Food("Tomato Soup", 10, "Refreshing bowl of soup", 300, FoodType.SOUP);
+//Food food2 = new Food("Mushroom Soup", 12, "Refreshing bowl of soup", 300, FoodType.SOUP);
+//Food food3 = new Food("Wagyu Steak", 50, "Pan fried chunk of meat", 200, FoodType.MEAT);

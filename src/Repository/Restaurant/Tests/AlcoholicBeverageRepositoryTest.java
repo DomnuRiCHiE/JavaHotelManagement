@@ -3,9 +3,7 @@ package Repository.Restaurant.Tests;
 import Domain.Restaurant.AlcoholicBeverages;
 import Repository.Restaurant.AlcoholicBeverageRepository;
 import org.opentest4j.AssertionFailedError;
-
 import java.util.ArrayList;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 class AlcoholicBeverageRepositoryTest {

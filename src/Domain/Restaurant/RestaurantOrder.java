@@ -12,6 +12,8 @@ public class RestaurantOrder implements Payment {
     private ArrayList<Item> items;
     private PaymentMethod paymentMethod;
 
+    public RestaurantOrder() {}
+
     public RestaurantOrder(String ID, Client client, ArrayList<Item> items, PaymentMethod paymentMethod) {
         this.ID = ID;
         this.client = client;

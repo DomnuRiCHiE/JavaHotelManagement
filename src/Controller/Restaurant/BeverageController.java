@@ -1,42 +1,20 @@
 package Controller.Restaurant;
 
-import Controller.IController;
+import Controller.MainController;
 import Domain.Restaurant.Beverage;
 import Repository.Restaurant.BeverageRepository;
-import java.util.ArrayList;
 
-public class BeverageController implements IController<Beverage> {
-    private final BeverageRepository beverageRepository;
+public class BeverageController extends MainController<Beverage> {
     private static BeverageController instance;
 
-    public BeverageController(BeverageRepository beverageRepository) {
-        this.beverageRepository = beverageRepository;
+    public BeverageController() {
+        super(BeverageRepository.getInstance());
     }
 
-    public static BeverageController getInstance(BeverageRepository beverageRepository) {
+    public static BeverageController getInstance() {
         if(instance == null) {
-            instance = new BeverageController(beverageRepository);
+            instance = new BeverageController();
         }
         return instance;
-    }
-
-    @Override
-    public void add(Beverage object) {
-        beverageRepository.add(object);
-    }
-
-    @Override
-    public void update(Beverage object1, Beverage object2) {
-        beverageRepository.update(object1, object2);
-    }
-
-    @Override
-    public void delete(Beverage object) {
-        beverageRepository.delete(object);
-    }
-
-    @Override
-    public ArrayList<Beverage> getAll() {
-        return beverageRepository.getAll();
     }
 }

@@ -1,9 +1,15 @@
 package Controller.Restaurant;
 
-public class ItemController {
+import Controller.MainController;
+import Domain.Restaurant.Item;
+import Repository.Restaurant.ItemRepository;
+
+public class ItemController extends MainController<Item> {
     private static ItemController instance;
 
-    public ItemController() {}
+    private ItemController() {
+        super(ItemRepository.getInstance());
+    }
 
     public static ItemController getInstance() {
         if(instance == null) {
