@@ -1,13 +1,11 @@
 package Factory;
 
+import Domain.People.Address;
 import Domain.People.Person;
 
-abstract class PersonFactory implements Subscription {
-    public void signUp(){
-        createPerson();
-    }
+public abstract class PersonFactory implements CreatePerson{
 
-    public abstract Person createPerson();
+    public abstract Person createPerson(String name, String email, String phone_number, Address address);
 
 
 }
