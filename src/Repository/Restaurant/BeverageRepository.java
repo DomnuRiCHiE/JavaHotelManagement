@@ -8,9 +8,6 @@ public class BeverageRepository extends MainRepository<Beverage> {
 
     private BeverageRepository() {
         super();
-        //Beverage beverage1 = new Beverage("Water", 8, "H2O", 500);
-        //Beverage beverage2 = new Beverage("Pepsi", 11, "Refreshing soda", 330);
-        //Beverage beverage3 = new Beverage("Fanta", 11, "Refreshing soda", 330);
     }
 
     public static BeverageRepository getInstance() {
@@ -20,3 +17,7 @@ public class BeverageRepository extends MainRepository<Beverage> {
         return instance;
     }
 }
+
+//Beverage beverage1 = new Beverage("Water", 8, "H2O", 500);
+//Beverage beverage2 = new Beverage("Pepsi", 11, "Refreshing soda", 330);
+//Beverage beverage3 = new Beverage("Fanta", 11, "Refreshing soda", 330);

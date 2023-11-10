@@ -5,9 +5,16 @@ import Repository.MainRepository;
 
 
 public class RestaurantRepository extends MainRepository<Restaurant> {
+    private static RestaurantRepository instance;
 
-    public RestaurantRepository() {
+    private RestaurantRepository() {
         super();
     }
 
+    public static RestaurantRepository getInstance() {
+        if(instance == null) {
+            instance = new RestaurantRepository();
+        }
+        return instance;
+    }
 }

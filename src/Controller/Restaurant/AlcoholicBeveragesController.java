@@ -1,42 +1,20 @@
 package Controller.Restaurant;
 
-import Controller.IController;
+import Controller.MainController;
 import Domain.Restaurant.AlcoholicBeverages;
 import Repository.Restaurant.AlcoholicBeverageRepository;
-import java.util.ArrayList;
 
-public class AlcoholicBeveragesController implements IController<AlcoholicBeverages> {
-    private final AlcoholicBeverageRepository alcoholicBeverageRepository;
+public class AlcoholicBeveragesController extends MainController<AlcoholicBeverages> {
     private static AlcoholicBeveragesController instance;
 
-    public AlcoholicBeveragesController(AlcoholicBeverageRepository alcoholicBeverageRepository) {
-        this.alcoholicBeverageRepository = alcoholicBeverageRepository;
+    public AlcoholicBeveragesController() {
+        super(AlcoholicBeverageRepository.getInstance());
     }
 
-    public static AlcoholicBeveragesController getInstance(AlcoholicBeverageRepository alcoholicBeverageRepository) {
-        if(instance == null) {
-            instance = new AlcoholicBeveragesController(alcoholicBeverageRepository);
+    public static AlcoholicBeveragesController getInstance() {
+        if (instance == null) {
+            instance = new AlcoholicBeveragesController();
         }
         return instance;
-    }
-
-    @Override
-    public void add(AlcoholicBeverages object) {
-        alcoholicBeverageRepository.add(object);
-    }
-
-    @Override
-    public void update(AlcoholicBeverages object1, AlcoholicBeverages object2) {
-        alcoholicBeverageRepository.update(object1, object2);
-    }
-
-    @Override
-    public void delete(AlcoholicBeverages object) {
-        alcoholicBeverageRepository.delete(object);
-    }
-
-    @Override
-    public ArrayList<AlcoholicBeverages> getAll() {
-        return alcoholicBeverageRepository.getAll();
     }
 }

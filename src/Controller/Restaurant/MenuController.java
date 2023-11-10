@@ -1,43 +1,21 @@
 package Controller.Restaurant;
 
-import Controller.IController;
+import Controller.MainController;
 import Domain.Restaurant.Menu;
-import Repository.Restaurant.MenuRepository;
 import Domain.Restaurant.Item;
-import java.util.ArrayList;
+import Repository.Restaurant.MenuRepository;
 
-public class MenuController implements IController<Item> {
-    private final MenuRepository<Item> menuRepository;
+public class MenuController extends MainController<Menu<Item>> {
     private static MenuController instance;
 
-    public MenuController(MenuRepository<Item> menuRepository) {
-        this.menuRepository = menuRepository;
+    private MenuController() {
+        super(MenuRepository.getInstance());
     }
 
-    public static MenuController getInstance(MenuRepository<Item> menuRepository) {
+    public static MenuController getInstance() {
         if(instance == null) {
-            instance = new MenuController(menuRepository);
+            instance = new MenuController();
         }
         return instance;
-    }
-
-    @Override
-    public void add(Item object) {
-        menuRepository.add(object);
-    }
-
-    @Override
-    public void update(Item object1, Item object2) {
-        menuRepository.update(object1, object2);
-    }
-
-    @Override
-    public void delete(Item object) {
-        menuRepository.delete(object);
-    }
-
-    @Override
-    public ArrayList<Item> getAll() {
-        return menuRepository.getAll();
     }
 }

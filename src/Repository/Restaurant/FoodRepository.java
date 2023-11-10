@@ -8,9 +8,6 @@ public class FoodRepository extends MainRepository<Food> {
 
     private FoodRepository() {
         super();
-        //Food food1 = new Food("Tomato Soup", 10, "Refreshing bowl of soup", 300, FoodType.SOUP);
-        //Food food2 = new Food("Mushroom Soup", 12, "Refreshing bowl of soup", 300, FoodType.SOUP);
-        //Food food3 = new Food("Wagyu Steak", 50, "Pan fried chunk of meat", 200, FoodType.MEAT);
     }
 
     public static FoodRepository getInstance() {
@@ -20,3 +17,7 @@ public class FoodRepository extends MainRepository<Food> {
         return instance;
     }
 }
+
+//Food food1 = new Food("Tomato Soup", 10, "Refreshing bowl of soup", 300, FoodType.SOUP);
+//Food food2 = new Food("Mushroom Soup", 12, "Refreshing bowl of soup", 300, FoodType.SOUP);
+//Food food3 = new Food("Wagyu Steak", 50, "Pan fried chunk of meat", 200, FoodType.MEAT);

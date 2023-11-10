@@ -33,8 +33,8 @@ public class AlcoholicBeverages extends Beverage{
         return alcoholPercentage == that.alcoholPercentage;
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(alcoholPercentage);
-    }
+//    @Override
+//    public int hashCode() {
+//        return Objects.hash(alcoholPercentage);
+//    }
 }
