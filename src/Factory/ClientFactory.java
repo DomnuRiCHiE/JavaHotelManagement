@@ -6,8 +6,11 @@ import Domain.People.Person;
 
 public class ClientFactory extends PersonFactory{
 
+    public void createPassword(Client client, String password){
+        client.setPassword(password);
+    }
     @Override
-    public Person createPerson(String name, String email, String phone_number, Address address) {
+    public Client createPerson(String name, String email, String phone_number, Address address) {
         Client client = new Client();
         client.setName(name);
         client.setEmail(email);
@@ -15,5 +18,4 @@ public class ClientFactory extends PersonFactory{
         client.setPhone_number(phone_number);
         return client;
     }
-
 }
