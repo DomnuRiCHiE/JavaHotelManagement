@@ -2,6 +2,26 @@ package Domain.People;
 
 public class Client extends Person {
     private boolean membership;
+
+    private String password;
+
+    public Client(String name, String email, String phone_number, Address address, String password) {
+        this.password = password;
+        this.setName(name);
+        this.setEmail(email);
+        this.setPhone_number(phone_number);
+        this.setAddress(address);
+        this.setPassword(password);
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
     private double amount_spent_at_hotel;
 
     public Client() {}
