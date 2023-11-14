@@ -2,14 +2,12 @@ package UI;
 
 //import Controller.Controller;
 
-import javax.print.DocFlavor;
-import java.io.InputStream;
-import java.util.InputMismatchException;
+import java.io.Console;
 import java.util.Scanner;
 
-public class UI {
+public class UI implements UInterface {
     private String startUpMenu;
-    private String adminContextMenu;
+    private String loginMenu;
 
 //    private Controller controller;
 
@@ -18,61 +16,56 @@ public class UI {
 //    }
 
     public UI() {
-        this.startUpMenu = "----------------StartUp------------------" +
-                "\n\n Press enter to log in";
-        this.adminContextMenu = "----------------Manage------------------" +
-                "\n1. Restaurant" +
-                "\n2. Bookings" +
-                "\n3. Rooms" +
-                "\n4. Clients" +
-                "\n\n Type the number of your desired option to manage it";
+        this.startUpMenu = "----------------Welcome------------------\n" +
+                "-To login, please type 'login' \n" +
+                "-To quit the app, type 'quit' \n";
+        this.loginMenu = "----------------Login------------------\n";
     }
 
-    public void run() throws InterruptedException {
+    public void run() {
         System.out.println(startUpMenu);
         Scanner loginOption = new Scanner(System.in);
         String option = loginOption.nextLine();
-        System.out.println("Logging in...");
-        System.out.println("Welcome!!");
-        login();
+        selectWelcomeScreenOptions(option);
     }
 
-    public void login() {
-        System.out.println(adminContextMenu);
-        Scanner contextMenuOption = new Scanner(System.in);
-        int option = contextMenuOption.nextInt();
-        switch (option){
-            case 1:{
-                manageRestaurant();
+    public void selectWelcomeScreenOptions(String option) {
+        switch (option) {
+            case "login": {
+                loginTypeUsernameScreen();
                 break;
             }
-            case 2:{
-                manageBookings();
+            case "quit": {
+                System.out.println("Bye bye!");
                 break;
             }
-            case 3:{
-                manageRooms();
-                break;
-            }
-            case 4:{
-                manageClients();
-                break;
-            }
-
         }
     }
 
-    public void manageRestaurant(){
+    public void loginTypeUsernameScreen() {
+        System.out.println(this.loginMenu);
+        System.out.println("Enter username");
+        Scanner reader = new Scanner(System.in);
+        String username = reader.nextLine();
+        loginTypePasswordScreen();
+    }
+
+    @Override
+    public void loginTypePasswordScreen() {
+        Console cnsl = System.console();
+        if (cnsl == null) {
+            System.out.println("No console available");
+            return;
+        }
+
+        char[] password = cnsl.readPassword("Enter password:");
+    }
+
+    public void manageRooms() {
 
     }
 
-    public void manageBookings(){
-
-    }
-    public void manageRooms(){
-
-    }
-    public void manageClients(){
+    public void manageClients() {
 
     }
 }
