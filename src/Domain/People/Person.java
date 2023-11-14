@@ -1,6 +1,6 @@
 package Domain.People;
 
-abstract class Person {
+public abstract class Person {
     protected String name;
     protected String email;
     protected String phone_number;
