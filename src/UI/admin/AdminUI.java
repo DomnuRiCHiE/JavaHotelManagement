@@ -7,5 +7,5 @@ import Domain.Restaurant.Menu;
 import UI.UInterface;
 
 public interface AdminUI extends UInterface {
-    public void manageHotel();
+    public void manageHotel(); // uses ManageHotelUI
 }

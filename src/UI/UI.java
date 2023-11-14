@@ -60,12 +60,4 @@ public class UI implements UInterface {
 
         char[] password = cnsl.readPassword("Enter password:");
     }
-
-    public void manageRooms() {
-
-    }
-
-    public void manageClients() {
-
-    }
 }
