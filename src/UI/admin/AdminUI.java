@@ -33,6 +33,17 @@ public class AdminUI implements ReturnInput {
             case "2": searchClientByName(); break;
             case "3": modifyClientName(); break;
             case "4": modifyClientPhoneNumber(); break;
+            case "5": modifyClientAddress(); break;
+            case "6": modifyClientEmail(); break;
+            case "7": searchBookingByClientName(); break;
+            case "8": assignRestaurantToHotel(); break;
+            case "9": manageRestaurant(); break;
+            case "10": modifyBookingInfo(); break;
+            case "11": deleteClientFromHotel(); break;
+            case "12": deleteRoomFromHotel(); break;
+            case "13": manageRoom(); break;
+            case "14": addRoomToHotel(); break;
+            default: option = returnInput();
         }
     }
 
@@ -40,7 +51,7 @@ public class AdminUI implements ReturnInput {
 
     public void manageRestaurant() {}// uses ManageRestaurantUI
 
-    public void manageRoom(){}
+    public void manageRoom(){} // uses ManageRoomUI
     public void getClientsInfoList() {}
     public void searchClientByName() {}
     public void addRoomToHotel() {}
