@@ -2,10 +2,12 @@ package UI;
 
 //import Controller.Controller;
 
+import UI.admin.AdminUI;
+
 import java.io.Console;
 import java.util.Scanner;
 
-public class UI implements UInterface {
+public class UI implements ReturnInput{
     private String startUpMenu;
     private String loginMenu;
 
@@ -17,15 +19,15 @@ public class UI implements UInterface {
 
     public UI() {
         this.startUpMenu = "----------------Welcome------------------\n" +
-                "-To login, please type 'login' \n" +
+                "-To login as an user, please type 'login' \n" +
+                "-To have admin controls, type 'admin' \n" +
                 "-To quit the app, type 'quit' \n";
         this.loginMenu = "----------------Login------------------\n";
     }
 
     public void run() {
         System.out.println(startUpMenu);
-        Scanner loginOption = new Scanner(System.in);
-        String option = loginOption.nextLine();
+        String option = returnInput();
         selectWelcomeScreenOptions(option);
     }
 
@@ -35,6 +37,10 @@ public class UI implements UInterface {
                 loginTypeUsernameScreen();
                 break;
             }
+            case "admin":{
+                loginTypePasswordScreenAdmin();
+                break;
+            }
             case "quit": {
                 System.out.println("Bye bye!");
                 break;
@@ -42,22 +48,33 @@ public class UI implements UInterface {
         }
     }
 
+    public String returnInput(){
+        Scanner reader = new Scanner(System.in);
+        String input = reader.nextLine();
+        return input;
+    }
+
     public void loginTypeUsernameScreen() {
         System.out.println(this.loginMenu);
         System.out.println("Enter username");
-        Scanner reader = new Scanner(System.in);
-        String username = reader.nextLine();
+        String username = returnInput();
+//        check if username is correct
         loginTypePasswordScreen();
     }
 
-    @Override
     public void loginTypePasswordScreen() {
-        Console cnsl = System.console();
-        if (cnsl == null) {
-            System.out.println("No console available");
-            return;
-        }
-
-        char[] password = cnsl.readPassword("Enter password:");
+        System.out.println(this.loginMenu);
+        System.out.println("Enter password:");
+        String password = returnInput();
+//        check if password is correct
+        ClientUI clientUI = new ClientUI();
+    }
+    public void loginTypePasswordScreenAdmin() {
+        System.out.println(this.loginMenu);
+        System.out.println("Enter password:");
+        String password = returnInput();
+//        check if password is correct
+        AdminUI adminUI = new AdminUI();
+        adminUI.run();
     }
 }
