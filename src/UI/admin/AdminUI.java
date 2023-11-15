@@ -48,12 +48,14 @@ public class AdminUI implements ReturnInput {
     }
 
     public void assignRestaurantToHotel() {}
-
     public void manageRestaurant() {}// uses ManageRestaurantUI
-
     public void manageRoom(){} // uses ManageRoomUI
     public void getClientsInfoList() {}
-    public void searchClientByName() {}
+    public void searchClientByName() {
+        System.out.println("Client name: ");
+        String name = returnInput();
+
+    }
     public void addRoomToHotel() {}
     public void deleteRoomFromHotel() {}
     public void deleteClientFromHotel() {}

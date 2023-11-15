@@ -11,12 +11,6 @@ public class UI implements ReturnInput{
     private String startUpMenu;
     private String loginMenu;
 
-//    private Controller controller;
-
-//    public void setController(Controller controller) {
-//        this.controller = controller;
-//    }
-
     public UI() {
         this.startUpMenu = "----------------Welcome------------------\n" +
                 "-To login as an user, please type 'login' \n" +
