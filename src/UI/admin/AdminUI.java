@@ -67,7 +67,6 @@ public class AdminUI implements ReturnInput {
     @Override
     public String returnInput(){
         Scanner reader = new Scanner(System.in);
-        String input = reader.nextLine();
-        return input;
+        return reader.nextLine();
     }
 }
