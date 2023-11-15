@@ -1,11 +1,15 @@
 package UI.admin;
 
+import Controller.People.ClientController;
+import Domain.Hotel.RoomCategories;
 import UI.ReturnInput;
 
 import java.util.Scanner;
 
 public class AdminUI implements ReturnInput {
     private String adminContextMenuActions;
+
+    private ClientController clientController;
 
     public AdminUI() {
         this.adminContextMenuActions = "----------------Admin Menu------------------\n" +
@@ -22,7 +26,9 @@ public class AdminUI implements ReturnInput {
                 "11. deleteClientFromHotel\n" +
                 "12. deleteRoomFromHotel\n" +
                 "13. manageRoom\n" +
-                "14. addRoomToHotel\n";
+                "14. addRoomToHotel\n" +
+                "15. Go back";
+        this.clientController = ClientController.getInstance();
     }
 
     public void run() {
@@ -43,6 +49,7 @@ public class AdminUI implements ReturnInput {
             case "12": deleteRoomFromHotel(); break;
             case "13": manageRoom(); break;
             case "14": addRoomToHotel(); break;
+            case "15": break;
             default: option = returnInput();
         }
     }
@@ -54,11 +61,30 @@ public class AdminUI implements ReturnInput {
     public void searchClientByName() {
         System.out.println("Client name: ");
         String name = returnInput();
-
+//      search in controller
     }
-    public void addRoomToHotel() {}
-    public void deleteRoomFromHotel() {}
-    public void deleteClientFromHotel() {}
+    public void addRoomToHotel() {
+        System.out.println("Room number: ");
+        int number =  Integer.parseInt(returnInput());
+//      try catch  search room number in controller to see if it exists: update/fail?
+        System.out.println("Room type: ");
+        String type = returnInput();
+//      try catch  RoomCategories room_type = changeToRoomCategory(type);
+        System.out.println("Number of beds: ");
+        int beds = Integer.parseInt(returnInput());
+        System.out.println("Room price: ");
+        int price = Integer.parseInt(returnInput());
+//      try catch  controller.addRoom(number,type,beds,price)
+    }
+    public void deleteRoomFromHotel() {
+        System.out.println("Room number: ");
+//      try catch  controller.deleteRoom(Integer.parseInt(returnInput));
+    }
+    public void deleteClientFromHotel() {
+        System.out.println("Client name: ");
+        String name = returnInput();
+//      try catch controller.deleteClient(name)
+    }
     public void modifyClientName() {}
     public void modifyClientPhoneNumber() {}
     public void modifyClientAddress() {}
