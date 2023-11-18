@@ -6,9 +6,7 @@ import Domain.People.Person;
 
 public class ClientFactory extends PersonFactory{
 
-    public void createPassword(Client client, String password){
-        client.setPassword(password);
-    }
+
     @Override
     public Client createPerson(String name, String email, String phone_number, Address address) {
         Client client = new Client();

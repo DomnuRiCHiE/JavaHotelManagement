@@ -1,6 +1,5 @@
 package UI;
 
-//import Controller.Controller;
 
 import UI.admin.AdminUI;
 
@@ -11,11 +10,11 @@ public class UI implements ReturnInput{
     private String startUpMenu;
     private String loginMenu;
 
-//    private Controller controller;
+    private UIStrategy uiStrategy;
 
-//    public void setController(Controller controller) {
-//        this.controller = controller;
-//    }
+    public void setUiStrategy(UIStrategy uiStrategy) {
+        this.uiStrategy = uiStrategy;
+    }
 
     public UI() {
         this.startUpMenu = "----------------Welcome------------------\n" +
@@ -34,11 +33,13 @@ public class UI implements ReturnInput{
     public void selectWelcomeScreenOptions(String option) {
         switch (option) {
             case "login": {
-                loginTypeUsernameScreen();
+                setUiStrategy(new ClientUI());
+                uiStrategy.login();
                 break;
             }
             case "admin":{
-                loginTypePasswordScreenAdmin();
+                setUiStrategy(new AdminUI());
+                uiStrategy.login();
                 break;
             }
             case "quit": {
@@ -52,29 +53,5 @@ public class UI implements ReturnInput{
         Scanner reader = new Scanner(System.in);
         String input = reader.nextLine();
         return input;
-    }
-
-    public void loginTypeUsernameScreen() {
-        System.out.println(this.loginMenu);
-        System.out.println("Enter username");
-        String username = returnInput();
-//        check if username is correct
-        loginTypePasswordScreen();
-    }
-
-    public void loginTypePasswordScreen() {
-        System.out.println(this.loginMenu);
-        System.out.println("Enter password:");
-        String password = returnInput();
-//        check if password is correct
-        ClientUI clientUI = new ClientUI();
-    }
-    public void loginTypePasswordScreenAdmin() {
-        System.out.println(this.loginMenu);
-        System.out.println("Enter password:");
-        String password = returnInput();
-//        check if password is correct
-        AdminUI adminUI = new AdminUI();
-        adminUI.run();
     }
 }
