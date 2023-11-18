@@ -1,9 +1,10 @@
 package Repository.Hotel;
 
 import Domain.Hotel.Booking;
+import Repository.Interfaces.IBookingRepository;
 import Repository.MainRepository;
 
-public class BookingRepository extends MainRepository<Booking> {
+public class BookingRepository extends MainRepository<Booking> implements IBookingRepository {
     private static BookingRepository instance;
 
     private BookingRepository() {

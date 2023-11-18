@@ -1,9 +1,10 @@
 package Repository.Restaurant;
 
 import Domain.Restaurant.Menu;
+import Repository.Interfaces.IMenuRepository;
 import Repository.MainRepository;
 
-public class MenuRepository<Item> extends MainRepository<Menu<Item>> {
+public class MenuRepository<Item> extends MainRepository<Menu<Item>> implements IMenuRepository {
     private static MenuRepository<?> instance;
 
     private MenuRepository() {

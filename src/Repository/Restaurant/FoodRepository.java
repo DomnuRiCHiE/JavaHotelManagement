@@ -1,9 +1,10 @@
 package Repository.Restaurant;
 
 import Domain.Restaurant.Food;
+import Repository.Interfaces.IFoodRepository;
 import Repository.MainRepository;
 
-public class FoodRepository extends MainRepository<Food> {
+public class FoodRepository extends MainRepository<Food> implements IFoodRepository {
     private static FoodRepository instance;
 
     private FoodRepository() {

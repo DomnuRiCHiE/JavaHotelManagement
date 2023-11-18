@@ -60,6 +60,10 @@ public class Client extends Person{
         this.amount_spent_at_hotel = amount_spent_at_hotel;
     }
 
+    public Client copy() {
+        return new Client(name, email, phone_number, address, password);
+    }
+
     @Override
     public boolean login(String username, String password) {
         if (!Objects.equals(username, this.name) || !Objects.equals(password, this.password)){

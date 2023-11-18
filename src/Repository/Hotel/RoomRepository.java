@@ -1,9 +1,10 @@
 package Repository.Hotel;
 
 import Domain.Hotel.Room;
+import Repository.Interfaces.IRoomRepository;
 import Repository.MainRepository;
 
-public class RoomRepository extends MainRepository<Room> {
+public class RoomRepository extends MainRepository<Room> implements IRoomRepository {
     private static RoomRepository instance;
 
     private RoomRepository() {
