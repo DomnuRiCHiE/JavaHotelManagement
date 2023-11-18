@@ -1,10 +1,15 @@
 package UI;
 
+import Factory.ClientFactory;
+
 import java.util.Scanner;
 
-public class ClientUI implements ReturnInput {
+public class ClientUI implements ReturnInput, UIStrategy {
     private String clientContextActionMenu;
+
+    private ClientFactory clientFactory;
     public void run(){
+        this.clientFactory = new ClientFactory();
         this.clientContextActionMenu = "----------------User Menu------------------\n" +
                 "1. Book a stay\n" +
                 "2. Place restaurant order\n";
@@ -23,5 +28,10 @@ public class ClientUI implements ReturnInput {
     public String returnInput() {
         Scanner reader = new Scanner(System.in);
         return reader.nextLine();
+    }
+
+    @Override
+    public void login(){
+
     }
 }
