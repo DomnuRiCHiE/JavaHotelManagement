@@ -1,10 +1,12 @@
 package Domain.People;
 
-public abstract class Person {
+public abstract class Person implements Login {
     protected String name;
     protected String email;
     protected String phone_number;
     protected Address address;
+
+    protected String password;
 
     public String getName() {return name;}
 
@@ -21,4 +23,9 @@ public abstract class Person {
     public Address getAddress() {return address;}
 
     public void setAddress(Address address) {this.address = address;}
+
+    @Override
+    public boolean login(String username, String password) {
+        return false;
+    }
 }
