@@ -1,10 +1,11 @@
 package Controller.Restaurant;
 
+import Controller.Interfaces.IAlcoholicBeveragesController;
 import Controller.MainController;
 import Domain.Restaurant.AlcoholicBeverages;
 import Repository.Restaurant.AlcoholicBeverageRepository;
 
-public class AlcoholicBeveragesController extends MainController<AlcoholicBeverages> {
+public class AlcoholicBeveragesController extends MainController<AlcoholicBeverages> implements IAlcoholicBeveragesController {
     private static AlcoholicBeveragesController instance;
 
     public AlcoholicBeveragesController() {

@@ -1,10 +1,11 @@
 package Controller.Hotel;
 
+import Controller.Interfaces.IBookingController;
 import Controller.MainController;
 import Domain.Hotel.Booking;
 import Repository.Hotel.BookingRepository;
 
-public class BookingController extends MainController<Booking> {
+public class BookingController extends MainController<Booking> implements IBookingController {
     private static BookingController instance;
 
     private BookingController() {

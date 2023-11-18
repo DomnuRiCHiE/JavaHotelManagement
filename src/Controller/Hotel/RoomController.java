@@ -1,10 +1,11 @@
 package Controller.Hotel;
 
+import Controller.Interfaces.IRoomController;
 import Controller.MainController;
 import Domain.Hotel.Room;
 import Repository.Hotel.RoomRepository;
 
-public class RoomController extends MainController<Room> {
+public class RoomController extends MainController<Room> implements IRoomController {
     private static RoomController instance;
 
     private RoomController() {

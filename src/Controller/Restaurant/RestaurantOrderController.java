@@ -1,5 +1,7 @@
 package Controller.Restaurant;
 
-public class RestaurantOrderController {
+import Controller.Interfaces.IRestaurantOrderController;
+
+public class RestaurantOrderController implements IRestaurantOrderController {
 
 }

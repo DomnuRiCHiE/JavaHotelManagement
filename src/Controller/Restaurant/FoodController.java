@@ -1,10 +1,11 @@
 package Controller.Restaurant;
 
+import Controller.Interfaces.IFoodController;
 import Controller.MainController;
 import Domain.Restaurant.Food;
 import Repository.Restaurant.FoodRepository;
 
-public class FoodController extends MainController<Food> {
+public class FoodController extends MainController<Food> implements IFoodController {
     private static FoodController instance;
 
     public FoodController() {

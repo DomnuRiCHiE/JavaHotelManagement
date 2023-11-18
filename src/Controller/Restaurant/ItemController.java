@@ -1,10 +1,11 @@
 package Controller.Restaurant;
 
+import Controller.Interfaces.IItemController;
 import Controller.MainController;
 import Domain.Restaurant.Item;
 import Repository.Restaurant.ItemRepository;
 
-public class ItemController extends MainController<Item> {
+public class ItemController extends MainController<Item> implements IItemController {
     private static ItemController instance;
 
     private ItemController() {
