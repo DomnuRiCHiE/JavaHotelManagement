@@ -1,9 +1,9 @@
 package Domain.People;
 
-public class Client extends Person {
-    private boolean membership;
+import java.util.Objects;
 
-    private String password;
+public class Client extends Person{
+    private boolean membership;
 
     public Client(String name, String email, String phone_number, Address address, String password) {
         this.password = password;
@@ -58,5 +58,14 @@ public class Client extends Person {
 
     public void setAmount_spent_at_hotel(double amount_spent_at_hotel) {
         this.amount_spent_at_hotel = amount_spent_at_hotel;
+    }
+
+    @Override
+    public boolean login(String username, String password) {
+        if (!Objects.equals(username, this.name) || !Objects.equals(password, this.password)){
+            System.out.println("Username or password not matching");
+            return false;
+        }
+        return true;
     }
 }
