@@ -48,4 +48,8 @@ public class ClientController extends MainController<Client> implements IClientC
             return new Client();
         }
     }
+
+    public String getClientInfoList(Client client) {
+        return client.toString();
+    }
 }
