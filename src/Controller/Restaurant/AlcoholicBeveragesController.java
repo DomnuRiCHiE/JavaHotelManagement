@@ -5,6 +5,7 @@ import Controller.MainController;
 import Domain.Restaurant.AlcoholicBeverages;
 import Repository.Interfaces.IAlcoholicBeverageRepository;
 import Repository.Restaurant.AlcoholicBeverageRepository;
+import java.util.ArrayList;
 
 public class AlcoholicBeveragesController extends MainController<AlcoholicBeverages> implements IAlcoholicBeveragesController {
     private static AlcoholicBeveragesController instance;
@@ -20,5 +21,21 @@ public class AlcoholicBeveragesController extends MainController<AlcoholicBevera
             instance = new AlcoholicBeveragesController(AlcoholicBeverageRepository.getInstance());
         }
         return instance;
+    }
+
+    public void add(AlcoholicBeverages object) {
+        super.add(object);
+    }
+
+    public void delete(AlcoholicBeverages object) {
+        super.delete(object);
+    }
+
+    public void update(AlcoholicBeverages object1, AlcoholicBeverages object2) {
+        super.update(object1, object2);
+    }
+
+    public ArrayList<AlcoholicBeverages> getAll() {
+        return super.getAll();
     }
 }

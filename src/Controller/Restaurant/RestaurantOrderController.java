@@ -5,6 +5,7 @@ import Controller.MainController;
 import Domain.Restaurant.RestaurantOrder;
 import Repository.Interfaces.IRestaurantOrderRepository;
 import Repository.Restaurant.RestaurantOrderRepository;
+import java.util.ArrayList;
 
 public class RestaurantOrderController extends MainController<RestaurantOrder> implements IRestaurantOrderController {
     private static RestaurantOrderController instance;
@@ -20,5 +21,21 @@ public class RestaurantOrderController extends MainController<RestaurantOrder> i
             instance = new RestaurantOrderController(RestaurantOrderRepository.getInstance());
         }
         return instance;
+    }
+
+    public void add(RestaurantOrder object) {
+        super.add(object);
+    }
+
+    public void delete(RestaurantOrder object) {
+        super.delete(object);
+    }
+
+    public void update(RestaurantOrder object1, RestaurantOrder object2) {
+        super.update(object1, object2);
+    }
+
+    public ArrayList<RestaurantOrder> getAll() {
+        return super.getAll();
     }
 }
