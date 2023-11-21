@@ -1,5 +1,8 @@
 package UI.admin;
 
+import Controller.Hotel.BookingController;
+import Controller.Hotel.HotelController;
+import Controller.Hotel.RoomController;
 import Controller.People.ClientController;
 import Domain.People.Admin;
 import Domain.People.Client;
@@ -13,9 +16,13 @@ public class AdminStrategyUI implements ReturnInput, UIStrategy {
 
     private ClientController clientController;
 
+    private BookingController bookingController;
+    private HotelController hotelController;
+    private RoomController roomController;
+
     private Admin admin;
 
-    public AdminStrategyUI() {
+    public AdminStrategyUI(BookingController bookingController, HotelController hotelController, RoomController roomController, ClientController clientController) {
         this.admin = Admin.getInstance();
         login();
         this.adminContextMenuActions = "----------------Admin Menu------------------\n" +
@@ -31,7 +38,10 @@ public class AdminStrategyUI implements ReturnInput, UIStrategy {
                 "10. manageRoom\n" +
                 "11. addRoomToHotel\n" +
                 "12. Go back";
-        this.clientController = ClientController.getInstance();
+        this.clientController = clientController;
+        this.bookingController = bookingController;
+        this.hotelController = hotelController;
+        this.roomController = roomController;
         run();
     }
 

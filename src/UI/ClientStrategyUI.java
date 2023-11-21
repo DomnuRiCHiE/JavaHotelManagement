@@ -1,5 +1,6 @@
 package UI;
 
+import Controller.People.ClientController;
 import Factory.ClientFactory;
 
 import java.util.Scanner;
@@ -8,11 +9,18 @@ public class ClientStrategyUI implements ReturnInput, UIStrategy {
     private String clientContextActionMenu;
 
     private ClientFactory clientFactory;
-    public void run(){
+
+    private ClientController clientController;
+
+    public ClientStrategyUI(ClientController clientController){
+        this.clientController = clientController;
         this.clientFactory = new ClientFactory();
         this.clientContextActionMenu = "----------------User Menu------------------\n" +
                 "1. Book a stay\n" +
                 "2. Place restaurant order\n";
+    }
+    public void run(){
+
     }
     public void showClientOptions(){
         String option = returnInput();
@@ -32,6 +40,9 @@ public class ClientStrategyUI implements ReturnInput, UIStrategy {
 
     @Override
     public void login(){
+        System.out.println("----------------Login------------------\n" +
+                "Username: ");
+        String username = returnInput();
 
     }
 }
