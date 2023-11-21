@@ -2,6 +2,7 @@ package UI.admin;
 
 import Controller.People.ClientController;
 import Domain.People.Admin;
+import Domain.People.Client;
 import UI.ReturnInput;
 import UI.UIStrategy;
 
@@ -57,7 +58,11 @@ public class AdminStrategyUI implements ReturnInput, UIStrategy {
     public void assignRestaurantToHotel() {}
     public void manageRestaurant() {}// uses ManageRestaurantUI
     public void manageRoom(){} // uses ManageRoomUI
-    public void getClientsInfoList() {}
+    public void getClientsInfoList() {
+        System.out.println("Name of the client: ");
+        String client_name = returnInput();
+        clientController.getClientInfoList(clientController.searchByName(client_name));
+    }
     public void searchClientByName() {
         System.out.println("Client name: ");
         String name = returnInput();
@@ -85,7 +90,47 @@ public class AdminStrategyUI implements ReturnInput, UIStrategy {
         String name = returnInput();
 //      try catch controller.deleteClient(name)
     }
-    public void updateClient() {}
+    public void updateClient() {
+        System.out.println("Name of the client: ");
+        String client_name = returnInput();
+        Client client = clientController.searchByName(client_name);
+        Client client1 = client;
+        System.out.println("----------------Update----------------\n" +
+                "- Name\n" +
+                "- Phone Number\n" +
+                "- Email\n" +
+                "- Address\n" +
+                "- Exit\n");
+        String option = returnInput();
+        switch (option){
+            case "Name": {
+                System.out.println("New name: ");
+                String name = returnInput();
+                client1.setName(name);
+                break;
+            }
+            case "Phone Number":{
+                System.out.println("New phone number: ");
+                String number = returnInput();
+                client1.setPhone_number(number);
+                break;
+            }
+            case "Email": {
+                System.out.println("New email: ");
+                String email = returnInput();
+                client1.setEmail(email);
+                break;
+            }
+            case "Address": {
+                System.out.println("Under Construction");
+                break;
+            }
+            case "Exit": {
+                break;
+            }
+        }
+        clientController.update(client, client1);
+    }
     public void updateBookingInfo() {}
     public void searchBookingByClientName() {}
 
