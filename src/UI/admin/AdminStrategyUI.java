@@ -46,31 +46,41 @@ public class AdminStrategyUI implements ReturnInput, UIStrategy {
     }
 
     public void run() {
-        System.out.println(this.adminContextMenuActions);
-        String option = returnInput();
-        switch (option){
-            case "1": getClientsInfoList(); break;
-            case "2": searchClientByName(); break;
-            case "3": updateClient(); break;
-            case "4": searchBookingByClientName(); break;
-            case "5": assignRestaurantToHotel(); break;
-            case "6": manageRestaurant(); break;
-            case "7": updateBookingInfo(); break;
-            case "8": deleteClientFromHotel(); break;
-            case "9": deleteRoomFromHotel(); break;
-            case "10": manageRoom(); break;
-            case "11": addRoomToHotel(); break;
-            default: break;
+        while (true) {
+            System.out.println(this.adminContextMenuActions);
+            String option = returnInput();
+            if (Objects.equals(option,"12")){
+                break;
+            }
+            switch (option) {
+                case "1": getClientsInfoList(); break;
+                case "2": searchClientByName(); break;
+                case "3": updateClient(); break;
+                case "4": searchBookingByClientName(); break;
+                case "5": assignRestaurantToHotel(); break;
+                case "6": manageRestaurant(); break;
+                case "7": updateBookingInfo(); break;
+                case "8": deleteClientFromHotel(); break;
+                case "9": deleteRoomFromHotel(); break;
+                case "10": manageRoom(); break;
+                case "11": addRoomToHotel(); break;
+                default: break;
+            }
         }
     }
 
-    public void assignRestaurantToHotel() {}
-    public void manageRestaurant() {}// uses ManageRestaurantUI
-    public void manageRoom(){} // uses ManageRoomUI
+    public void assignRestaurantToHotel() {
+        System.out.println("Under Construction");
+    }
+    public void manageRestaurant() {
+        System.out.println("Under Construction");
+    }// uses ManageRestaurantUI
+    public void manageRoom(){
+        System.out.println("Under Construction");
+    } // uses ManageRoomUI
     public void getClientsInfoList() {
-        System.out.println("Name of the client: ");
-        String client_name = returnInput();
-//        clientController.getClientInfoList(clientController.searchByName(client_name));
+        Client client = searchClientByName();
+        System.out.println(clientController.getClientInfoList(client));
     }
     public Client searchClientByName() {
         System.out.println("Client name: ");
@@ -83,19 +93,21 @@ public class AdminStrategyUI implements ReturnInput, UIStrategy {
                 break;
             }
         }
+        return client_to_be_changed;
     }
     public void addRoomToHotel() {
-        System.out.println("Room number: ");
-        int number =  Integer.parseInt(returnInput());
-//      try catch  search room number in controller to see if it exists: update/fail?
-        System.out.println("Room type: ");
-        String type = returnInput();
-//      try catch  RoomCategories room_type = changeToRoomCategory(type);
-        System.out.println("Number of beds: ");
-        int beds = Integer.parseInt(returnInput());
-        System.out.println("Room price: ");
-        int price = Integer.parseInt(returnInput());
-//      try catch  controller.addRoom(number,type,beds,price)
+        System.out.println("Under Construction");
+//        System.out.println("Room number: ");
+//        int number =  Integer.parseInt(returnInput());
+////      try catch  search room number in controller to see if it exists: update/fail?
+//        System.out.println("Room type: ");
+//        String type = returnInput();
+////      try catch  RoomCategories room_type = changeToRoomCategory(type);
+//        System.out.println("Number of beds: ");
+//        int beds = Integer.parseInt(returnInput());
+//        System.out.println("Room price: ");
+//        int price = Integer.parseInt(returnInput());
+////      try catch  controller.addRoom(number,type,beds,price)
     }
     public void deleteRoomFromHotel() {
         System.out.println("Room number: ");
@@ -147,8 +159,12 @@ public class AdminStrategyUI implements ReturnInput, UIStrategy {
         }
 
     }
-    public void updateBookingInfo() {}
-    public void searchBookingByClientName() {}
+    public void updateBookingInfo() {
+        System.out.println("Under Construction");
+    }
+    public void searchBookingByClientName() {
+        System.out.println("Under Construction");
+    }
 
     @Override
     public String returnInput(){

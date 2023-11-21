@@ -1,8 +1,11 @@
 package UI;
 
 import Controller.People.ClientController;
+import Domain.People.Client;
 import Factory.ClientFactory;
 
+import java.util.ArrayList;
+import java.util.Objects;
 import java.util.Scanner;
 
 public class ClientStrategyUI implements ReturnInput, UIStrategy {
@@ -18,7 +21,6 @@ public class ClientStrategyUI implements ReturnInput, UIStrategy {
         this.clientContextActionMenu = "----------------User Menu------------------\n" +
                 "1. Book a stay\n" +
                 "2. Place restaurant order\n";
-        run();
     }
 
     public void run(){
@@ -41,8 +43,29 @@ public class ClientStrategyUI implements ReturnInput, UIStrategy {
         return reader.nextLine();
     }
 
+    public Client searchClientByName() {
+        System.out.println("Client name: ");
+        String name = returnInput();
+        ArrayList<Client> clients = clientController.getAll();
+        Client client_to_be_changed = new Client();
+        for (Client client : clients){
+            if (Objects.equals(client.getName(), name)){
+                client_to_be_changed = client;
+                break;
+            }
+        }
+        return client_to_be_changed;
+    }
+
     @Override
     public void login(){
-
+        System.out.println("----------------Login------------------\n");
+        Client client = searchClientByName();
+        System.out.println("Password: ");
+        String password = returnInput();
+        if (!client.login(client.getName(),password)){
+            return;
+        }
+        run();
     }
 }
