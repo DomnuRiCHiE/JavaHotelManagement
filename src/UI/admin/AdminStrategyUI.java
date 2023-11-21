@@ -1,21 +1,20 @@
 package UI.admin;
 
 import Controller.People.ClientController;
-import Domain.Hotel.RoomCategories;
 import Domain.People.Admin;
 import UI.ReturnInput;
 import UI.UIStrategy;
 
 import java.util.Scanner;
 
-public class AdminUI implements ReturnInput, UIStrategy {
+public class AdminStrategyUI implements ReturnInput, UIStrategy {
     private String adminContextMenuActions;
 
     private ClientController clientController;
 
     private Admin admin;
 
-    public AdminUI() {
+    public AdminStrategyUI() {
         this.admin = Admin.getInstance();
         login();
         this.adminContextMenuActions = "----------------Admin Menu------------------\n" +
