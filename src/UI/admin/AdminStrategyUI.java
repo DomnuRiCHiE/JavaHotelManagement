@@ -1,5 +1,8 @@
 package UI.admin;
 
+import Controller.Hotel.BookingController;
+import Controller.Hotel.HotelController;
+import Controller.Hotel.RoomController;
 import Controller.People.ClientController;
 import Domain.People.Admin;
 import Domain.People.Client;
@@ -13,9 +16,13 @@ public class AdminStrategyUI implements ReturnInput, UIStrategy {
 
     private ClientController clientController;
 
+    private BookingController bookingController;
+    private HotelController hotelController;
+    private RoomController roomController;
+
     private Admin admin;
 
-    public AdminStrategyUI() {
+    public AdminStrategyUI(BookingController bookingController, HotelController hotelController, RoomController roomController, ClientController clientController) {
         this.admin = Admin.getInstance();
         login();
         this.adminContextMenuActions = "----------------Admin Menu------------------\n" +
@@ -31,7 +38,10 @@ public class AdminStrategyUI implements ReturnInput, UIStrategy {
                 "10. manageRoom\n" +
                 "11. addRoomToHotel\n" +
                 "12. Go back";
-        //this.clientController = ClientController.getInstance();
+        this.clientController = clientController;
+        this.bookingController = bookingController;
+        this.hotelController = hotelController;
+        this.roomController = roomController;
         run();
     }
 
@@ -61,7 +71,7 @@ public class AdminStrategyUI implements ReturnInput, UIStrategy {
     public void getClientsInfoList() {
         System.out.println("Name of the client: ");
         String client_name = returnInput();
-        clientController.getClientInfoList(clientController.searchByName(client_name));
+//        clientController.getClientInfoList(clientController.searchByName(client_name));
     }
     public void searchClientByName() {
         System.out.println("Client name: ");
@@ -93,8 +103,8 @@ public class AdminStrategyUI implements ReturnInput, UIStrategy {
     public void updateClient() {
         System.out.println("Name of the client: ");
         String client_name = returnInput();
-        Client client = clientController.searchByName(client_name);
-        Client client1 = client;
+//        Client client = clientController.ge(client_name);
+//        Client client1 = client;
         System.out.println("----------------Update----------------\n" +
                 "- Name\n" +
                 "- Phone Number\n" +
@@ -106,19 +116,19 @@ public class AdminStrategyUI implements ReturnInput, UIStrategy {
             case "Name": {
                 System.out.println("New name: ");
                 String name = returnInput();
-                client1.setName(name);
+//                client1.setName(name);
                 break;
             }
             case "Phone Number":{
                 System.out.println("New phone number: ");
                 String number = returnInput();
-                client1.setPhone_number(number);
+//                client1.setPhone_number(number);
                 break;
             }
             case "Email": {
                 System.out.println("New email: ");
                 String email = returnInput();
-                client1.setEmail(email);
+//                client1.setEmail(email);
                 break;
             }
             case "Address": {
@@ -129,7 +139,7 @@ public class AdminStrategyUI implements ReturnInput, UIStrategy {
                 break;
             }
         }
-        clientController.update(client, client1);
+//        clientController.update(client, client1);
     }
     public void updateBookingInfo() {}
     public void searchBookingByClientName() {}
