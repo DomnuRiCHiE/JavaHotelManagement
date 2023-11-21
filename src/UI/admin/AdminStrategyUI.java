@@ -1,21 +1,20 @@
 package UI.admin;
 
 import Controller.People.ClientController;
-import Domain.Hotel.RoomCategories;
 import Domain.People.Admin;
 import UI.ReturnInput;
 import UI.UIStrategy;
 
 import java.util.Scanner;
 
-public class AdminUI implements ReturnInput, UIStrategy {
+public class AdminStrategyUI implements ReturnInput, UIStrategy {
     private String adminContextMenuActions;
 
     private ClientController clientController;
 
     private Admin admin;
 
-    public AdminUI() {
+    public AdminStrategyUI() {
         this.admin = Admin.getInstance();
         login();
         this.adminContextMenuActions = "----------------Admin Menu------------------\n" +
@@ -41,11 +40,11 @@ public class AdminUI implements ReturnInput, UIStrategy {
         switch (option){
             case "1": getClientsInfoList(); break;
             case "2": searchClientByName(); break;
-            case "3": modifyClient(); break;
+            case "3": updateClient(); break;
             case "4": searchBookingByClientName(); break;
             case "5": assignRestaurantToHotel(); break;
             case "6": manageRestaurant(); break;
-            case "7": modifyBookingInfo(); break;
+            case "7": updateBookingInfo(); break;
             case "8": deleteClientFromHotel(); break;
             case "9": deleteRoomFromHotel(); break;
             case "10": manageRoom(); break;
@@ -86,8 +85,8 @@ public class AdminUI implements ReturnInput, UIStrategy {
         String name = returnInput();
 //      try catch controller.deleteClient(name)
     }
-    public void modifyClient() {}
-    public void modifyBookingInfo() {}
+    public void updateClient() {}
+    public void updateBookingInfo() {}
     public void searchBookingByClientName() {}
 
     @Override

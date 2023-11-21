@@ -4,7 +4,7 @@ import Factory.ClientFactory;
 
 import java.util.Scanner;
 
-public class ClientUI implements ReturnInput, UIStrategy {
+public class ClientStrategyUI implements ReturnInput, UIStrategy {
     private String clientContextActionMenu;
 
     private ClientFactory clientFactory;
