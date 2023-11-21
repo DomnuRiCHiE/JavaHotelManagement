@@ -1,9 +1,8 @@
 package UI;
 
 
-import UI.admin.AdminUI;
+import UI.admin.AdminStrategyUI;
 
-import java.io.Console;
 import java.util.Scanner;
 
 public class UI implements ReturnInput{
@@ -33,12 +32,12 @@ public class UI implements ReturnInput{
     public void selectWelcomeScreenOptions(String option) {
         switch (option) {
             case "login": {
-                setUiStrategy(new ClientUI());
+                setUiStrategy(new ClientStrategyUI());
                 uiStrategy.login();
                 break;
             }
             case "admin":{
-                setUiStrategy(new AdminUI());
+                setUiStrategy(new AdminStrategyUI());
                 uiStrategy.login();
                 break;
             }
