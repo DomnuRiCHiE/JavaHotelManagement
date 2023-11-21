@@ -28,17 +28,16 @@ public class AdminStrategyUI implements ReturnInput, UIStrategy {
         this.admin = Admin.getInstance();
         this.adminContextMenuActions = "----------------Admin Menu------------------\n" +
                 "1. getClientsInfoList\n" +
-                "2. searchClientByName\n" +
-                "3. modifyClient\n" +
-                "4. searchBookingByClientName\n" +
-                "5. assignRestaurantToHotel\n" +
-                "6. manageRestaurant\n" +
-                "7. modifyBookingInfo\n" +
-                "8. deleteClientFromHotel\n" +
-                "9. deleteRoomFromHotel\n" +
-                "10. manageRoom\n" +
-                "11. addRoomToHotel\n" +
-                "12. Go back";
+                "2. modifyClient\n" +
+                "3. searchBookingByClientName\n" +
+                "4. assignRestaurantToHotel\n" +
+                "5. manageRestaurant\n" +
+                "6. modifyBookingInfo\n" +
+                "7. deleteClientFromHotel\n" +
+                "8. deleteRoomFromHotel\n" +
+                "9. manageRoom\n" +
+                "10. addRoomToHotel\n" +
+                "11. Go back";
         this.clientController = clientController;
         this.bookingController = bookingController;
         this.hotelController = hotelController;
@@ -49,21 +48,20 @@ public class AdminStrategyUI implements ReturnInput, UIStrategy {
         while (true) {
             System.out.println(this.adminContextMenuActions);
             String option = returnInput();
-            if (Objects.equals(option,"12")){
+            if (Objects.equals(option,"11")){
                 break;
             }
             switch (option) {
                 case "1": getClientsInfoList(); break;
-                case "2": searchClientByName(); break;
-                case "3": updateClient(); break;
-                case "4": searchBookingByClientName(); break;
-                case "5": assignRestaurantToHotel(); break;
-                case "6": manageRestaurant(); break;
-                case "7": updateBookingInfo(); break;
-                case "8": deleteClientFromHotel(); break;
-                case "9": deleteRoomFromHotel(); break;
-                case "10": manageRoom(); break;
-                case "11": addRoomToHotel(); break;
+                case "2": updateClient(); break;
+                case "3": searchBookingByClientName(); break;
+                case "4": assignRestaurantToHotel(); break;
+                case "5": manageRestaurant(); break;
+                case "6": updateBookingInfo(); break;
+                case "7": deleteClientFromHotel(); break;
+                case "8": deleteRoomFromHotel(); break;
+                case "9": manageRoom(); break;
+                case "10": addRoomToHotel(); break;
                 default: break;
             }
         }
