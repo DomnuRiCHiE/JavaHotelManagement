@@ -30,7 +30,7 @@ public class AdminStrategyUI implements ReturnInput, UIStrategy {
                 "10. manageRoom\n" +
                 "11. addRoomToHotel\n" +
                 "12. Go back";
-        this.clientController = ClientController.getInstance();
+        //this.clientController = ClientController.getInstance();
         run();
     }
 
