@@ -11,9 +11,10 @@ import Repository.Hotel.RoomRepository;
 import Repository.People.ClientRepository;
 import UI.admin.AdminStrategyUI;
 
+import java.util.Objects;
 import java.util.Scanner;
 
-public class UI implements ReturnInput{
+public class UI implements ReturnInput {
     private String startUpMenu;
     private String loginMenu;
 
@@ -38,23 +39,29 @@ public class UI implements ReturnInput{
         this.bookingController = bookingController;
         this.hotelController = hotelController;
         this.roomController = roomController;
-        run();
     }
 
     public void run() {
-        System.out.println(startUpMenu);
-        String option = returnInput();
-        selectWelcomeScreenOptions(option);
+        while (true) {
+            System.out.println(startUpMenu);
+            String option = returnInput();
+
+            selectWelcomeScreenOptions(option);
+            if (Objects.equals(option,"quit")){
+                break;
+            }
+        }
     }
 
     public void selectWelcomeScreenOptions(String option) {
+
         switch (option) {
             case "login": {
                 setUiStrategy(new ClientStrategyUI(clientController));
                 uiStrategy.login();
                 break;
             }
-            case "admin":{
+            case "admin": {
                 setUiStrategy(new AdminStrategyUI(bookingController, hotelController, roomController, clientController));
                 uiStrategy.login();
                 break;
@@ -63,11 +70,12 @@ public class UI implements ReturnInput{
                 System.out.println("Bye bye!");
                 break;
             }
-            default: break;
+            default:
+                break;
         }
     }
 
-    public String returnInput(){
+    public String returnInput() {
         Scanner reader = new Scanner(System.in);
         String input = reader.nextLine();
         return input;
