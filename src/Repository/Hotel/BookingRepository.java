@@ -4,6 +4,8 @@ import Domain.Hotel.Booking;
 import Repository.Interfaces.IBookingRepository;
 import Repository.MainRepository;
 
+import java.util.ArrayList;
+
 public class BookingRepository extends MainRepository<Booking> implements IBookingRepository {
     private static BookingRepository instance;
 
@@ -17,4 +19,6 @@ public class BookingRepository extends MainRepository<Booking> implements IBooki
         }
         return instance;
     }
+
+
 }

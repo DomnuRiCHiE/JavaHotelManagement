@@ -72,4 +72,16 @@ public class Client extends Person{
         }
         return true;
     }
+
+    @Override
+    public String toString() {
+        return "Client{" +
+                "membership=" + membership +
+                ", amount_spent_at_hotel=" + amount_spent_at_hotel +
+                ", name='" + name + '\'' +
+                ", email='" + email + '\'' +
+                ", phone_number='" + phone_number + '\'' +
+                ", address=" + address +
+                '}';
+    }
 }
