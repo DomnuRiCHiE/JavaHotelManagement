@@ -9,6 +9,8 @@ import Domain.People.Client;
 import UI.ReturnInput;
 import UI.UIStrategy;
 
+import java.util.ArrayList;
+import java.util.Objects;
 import java.util.Scanner;
 
 public class AdminStrategyUI implements ReturnInput, UIStrategy {
@@ -24,7 +26,6 @@ public class AdminStrategyUI implements ReturnInput, UIStrategy {
 
     public AdminStrategyUI(BookingController bookingController, HotelController hotelController, RoomController roomController, ClientController clientController) {
         this.admin = Admin.getInstance();
-        login();
         this.adminContextMenuActions = "----------------Admin Menu------------------\n" +
                 "1. getClientsInfoList\n" +
                 "2. searchClientByName\n" +
@@ -42,7 +43,6 @@ public class AdminStrategyUI implements ReturnInput, UIStrategy {
         this.bookingController = bookingController;
         this.hotelController = hotelController;
         this.roomController = roomController;
-        run();
     }
 
     public void run() {
@@ -60,8 +60,7 @@ public class AdminStrategyUI implements ReturnInput, UIStrategy {
             case "9": deleteRoomFromHotel(); break;
             case "10": manageRoom(); break;
             case "11": addRoomToHotel(); break;
-            case "12": break;
-            default: option = returnInput();
+            default: break;
         }
     }
 
@@ -73,10 +72,17 @@ public class AdminStrategyUI implements ReturnInput, UIStrategy {
         String client_name = returnInput();
 //        clientController.getClientInfoList(clientController.searchByName(client_name));
     }
-    public void searchClientByName() {
+    public Client searchClientByName() {
         System.out.println("Client name: ");
         String name = returnInput();
-//      search in controller
+        ArrayList<Client> clients = clientController.getAll();
+        Client client_to_be_changed = new Client();
+        for (Client client : clients){
+            if (Objects.equals(client.getName(), name)){
+                client_to_be_changed = client;
+                break;
+            }
+        }
     }
     public void addRoomToHotel() {
         System.out.println("Room number: ");
@@ -96,15 +102,12 @@ public class AdminStrategyUI implements ReturnInput, UIStrategy {
 //      try catch  controller.deleteRoom(Integer.parseInt(returnInput));
     }
     public void deleteClientFromHotel() {
-        System.out.println("Client name: ");
-        String name = returnInput();
-//      try catch controller.deleteClient(name)
+        Client client_to_be_changed = searchClientByName();
+        clientController.delete(client_to_be_changed);
     }
     public void updateClient() {
-        System.out.println("Name of the client: ");
-        String client_name = returnInput();
-//        Client client = clientController.ge(client_name);
-//        Client client1 = client;
+        Client client_to_be_changed = searchClientByName();
+        Client client1 = client_to_be_changed;
         System.out.println("----------------Update----------------\n" +
                 "- Name\n" +
                 "- Phone Number\n" +
@@ -116,19 +119,22 @@ public class AdminStrategyUI implements ReturnInput, UIStrategy {
             case "Name": {
                 System.out.println("New name: ");
                 String name = returnInput();
-//                client1.setName(name);
+                client1.setName(name);
+                clientController.update(client_to_be_changed, client1);
                 break;
             }
             case "Phone Number":{
                 System.out.println("New phone number: ");
                 String number = returnInput();
-//                client1.setPhone_number(number);
+                client1.setPhone_number(number);
+                clientController.update(client_to_be_changed, client1);
                 break;
             }
             case "Email": {
                 System.out.println("New email: ");
                 String email = returnInput();
-//                client1.setEmail(email);
+                client1.setEmail(email);
+                clientController.update(client_to_be_changed, client1);
                 break;
             }
             case "Address": {
@@ -139,7 +145,7 @@ public class AdminStrategyUI implements ReturnInput, UIStrategy {
                 break;
             }
         }
-//        clientController.update(client, client1);
+
     }
     public void updateBookingInfo() {}
     public void searchBookingByClientName() {}
@@ -155,13 +161,9 @@ public class AdminStrategyUI implements ReturnInput, UIStrategy {
         System.out.println("----------------Login------------------\n" +
                 "Password: ");
         String password = returnInput();
-        while (true){
-            if (admin.login("admin",password)){
-                break;
-            }
-            System.out.println("Try again\n" +
-                    "Password: ");
-            password = returnInput();
+        if (!admin.login("admin", password)){
+            return;
         }
+        run();
     }
 }
