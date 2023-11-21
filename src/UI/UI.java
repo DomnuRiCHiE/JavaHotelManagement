@@ -45,6 +45,7 @@ public class UI implements ReturnInput{
                 System.out.println("Bye bye!");
                 break;
             }
+            default: break;
         }
     }
 
