@@ -50,6 +50,9 @@ public class UI implements ReturnInput {
             if (Objects.equals(option,"quit")){
                 break;
             }
+            if (uiStrategy != null){
+                uiStrategy.login();
+            }
         }
     }
 
@@ -58,12 +61,10 @@ public class UI implements ReturnInput {
         switch (option) {
             case "login": {
                 setUiStrategy(new ClientStrategyUI(clientController));
-                uiStrategy.login();
                 break;
             }
             case "admin": {
                 setUiStrategy(new AdminStrategyUI(bookingController, hotelController, roomController, clientController));
-                uiStrategy.login();
                 break;
             }
             case "quit": {
@@ -73,6 +74,7 @@ public class UI implements ReturnInput {
             default:
                 break;
         }
+
     }
 
     public String returnInput() {
