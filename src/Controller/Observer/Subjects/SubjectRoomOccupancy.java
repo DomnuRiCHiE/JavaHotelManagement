@@ -21,4 +21,9 @@ public class SubjectRoomOccupancy implements ISubjectRoomOccupancy {
             observer.updateRoomOccupancy(room);
         }
     }
+
+    public void setRoomOccupancy(Room room, boolean occupied) {
+        room.setOccupied(occupied);
+        notifyObservers(room);
+    }
 }

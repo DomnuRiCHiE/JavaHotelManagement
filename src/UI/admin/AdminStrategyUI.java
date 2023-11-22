@@ -3,12 +3,17 @@ package UI.admin;
 import Controller.Hotel.BookingController;
 import Controller.Hotel.HotelController;
 import Controller.Hotel.RoomController;
+import Controller.Observer.Observers.ObserverRoomOccupancy;
+import Controller.Observer.Subjects.SubjectRoomOccupancy;
 import Controller.People.ClientController;
+import Domain.Hotel.Room;
+import Domain.Hotel.RoomCategories;
 import Domain.People.Admin;
 import Domain.People.Client;
 import UI.ReturnInput;
 import UI.UIStrategy;
 
+import javax.security.auth.Subject;
 import java.util.ArrayList;
 import java.util.Objects;
 import java.util.Scanner;
@@ -37,7 +42,8 @@ public class AdminStrategyUI implements ReturnInput, UIStrategy {
                 "8. deleteRoomFromHotel\n" +
                 "9. manageRoom\n" +
                 "10. addRoomToHotel\n" +
-                "11. Go back";
+                "11. observer pattern\n" +
+                "12. Go back";
         this.clientController = clientController;
         this.bookingController = bookingController;
         this.hotelController = hotelController;
@@ -48,7 +54,7 @@ public class AdminStrategyUI implements ReturnInput, UIStrategy {
         while (true) {
             System.out.println(this.adminContextMenuActions);
             String option = returnInput();
-            if (Objects.equals(option,"11")){
+            if (Objects.equals(option,"12")){
                 break;
             }
             switch (option) {
@@ -62,7 +68,44 @@ public class AdminStrategyUI implements ReturnInput, UIStrategy {
                 case "8": deleteRoomFromHotel(); break;
                 case "9": manageRoom(); break;
                 case "10": addRoomToHotel(); break;
+                case "11": observerPattern(); break;
                 default: break;
+            }
+        }
+    }
+
+    public void observerPattern() {
+        SubjectRoomOccupancy subjectRoomOccupancy = new SubjectRoomOccupancy();
+        ObserverRoomOccupancy observerRoomOccupancy = new ObserverRoomOccupancy();
+
+        subjectRoomOccupancy.addObserver(observerRoomOccupancy);
+
+        Scanner scanner = new Scanner(System.in);
+        while(true) {
+            System.out.println("1. Make a change to notify the observers");
+            System.out.println("2. See the last update");
+            System.out.println("3. Exit");
+
+            System.out.println("What's your choice: ");
+            int choice = scanner.nextInt();
+
+            Room room = new Room(1, RoomCategories.STUDIO, 2, 50);
+
+            switch (choice) {
+                case 1:
+                    System.out.println("Enter the new room occupancy status (true/false): ");
+                    boolean newStatus = scanner.nextBoolean();
+                    subjectRoomOccupancy.setRoomOccupancy(room, newStatus);
+                    observerRoomOccupancy.updateRoomOccupancy(room);
+                    break;
+                case 2:
+                    System.out.println(observerRoomOccupancy.getLastUpdate());
+                    break;
+                case 3:
+                    System.out.println("Exiting the observer pattern example.");
+                    System.exit(0);
+                default:
+                    System.out.println("Invalid choice. Please enter 1, 2, or 3.");
             }
         }
     }
