@@ -19,7 +19,8 @@ public class DatabaseConnection {
 
     public static Connection getConnection()
     {
-        if (connection == null) throw new RuntimeException("Database connection failed");
+        if (connection == null)
+            throw new RuntimeException("Database connection failed");
         return connection;
     }
 }
