@@ -22,4 +22,15 @@ public class Beverage extends Item{
                 "volume=" + volume +
                 '}';
     }
+
+    private final static Beverage nullBeverage = new Beverage();
+
+    public Beverage() {
+        super();
+        this.volume = 0;
+    }
+
+    public static Beverage getNullBeverage() {
+        return nullBeverage;
+    }
 }

@@ -33,4 +33,20 @@ public class Food extends Item{
                 ", foodType=" + foodType +
                 '}';
     }
+
+    private final static Food nullFood = new Food();
+
+    public Food(String name, double price, String description, int quantity) {
+        super(name, price, description);
+        this.quantity = quantity;
+    }
+
+    public Food() {
+        super();
+        this.quantity = 0;
+    }
+
+    public static Food getNullFood() {
+        return nullFood;
+    }
 }
