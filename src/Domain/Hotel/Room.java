@@ -17,6 +17,13 @@ public class Room extends SubjectRoomOccupancy {
         this.occupied = false;
     }
 
+    public Room(int roomNumber, int numberOfBeds, Boolean occupied, int price) {
+        this.roomNumber = roomNumber;
+        this.numberOfBeds = numberOfBeds;
+        this.price = price;
+        this.occupied = false;
+    }
+
     public int getRoomNumber() {
         return roomNumber;
     }
@@ -44,5 +51,18 @@ public class Room extends SubjectRoomOccupancy {
 
     public void notifyObservers(Room room) {
         super.notifyObservers(room);
+    }
+
+    public Room(){
+        this.roomNumber = 0;
+        this.price = 0;
+        this.occupied = false;
+        this.numberOfBeds = 0;
+    }
+
+    public final static Room nullRoom = new Room();
+
+    public static Room getNullRoom() {
+        return nullRoom;
     }
 }

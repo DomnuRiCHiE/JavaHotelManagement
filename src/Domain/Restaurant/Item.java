@@ -49,4 +49,10 @@ public class Item {
         this.price = 0;
         this.description = "null";
     }
+
+    private final static Item nullItem = new Item();
+
+    public static Item getNullItem() {
+        return nullItem;
+    }
 }
