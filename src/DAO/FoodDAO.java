@@ -1,7 +1,7 @@
-//Check this again
 package DAO;
 
 import Domain.Restaurant.Food;
+import Domain.Restaurant.FoodType;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -25,14 +25,16 @@ public class FoodDAO implements IDAO<Food> {
         Double price = food.getPrice();
         String description = food.getDescription();
         Integer quantity = food.getQuantity();
+        FoodType foodType = food.getFoodType();
 
         try {
-            String insertQuery = "INSERT INTO food (name, price, description, quantity) VALUES (?, ?, ?, ?)";
+            String insertQuery = "INSERT INTO food (name, price, description, quantity, foodType) VALUES (?, ?, ?, ?, ?)";
             PreparedStatement insertStatement = connection.prepareStatement(insertQuery);
             insertStatement.setString(1, name);
             insertStatement.setDouble(2, price);
             insertStatement.setString(3, description);
             insertStatement.setInt(4, quantity);
+            insertStatement.setString(5, foodType.name());
             insertStatement.executeUpdate();
         }
         catch (SQLIntegrityConstraintViolationException e) {
@@ -49,14 +51,17 @@ public class FoodDAO implements IDAO<Food> {
         Double price = food.getPrice();
         String description = food.getDescription();
         Integer quantity = food.getQuantity();
+        FoodType foodType = food.getFoodType();
 
         try {
-            String insertQuery = "UPDATE food SET price = ?, description = ?, quantity = ? WHERE name = ?";
+            String insertQuery = "UPDATE food SET price = ?, description = ?, quantity = ?, foodtype = ? WHERE name = ?";
             PreparedStatement insertStatement = connection.prepareStatement(insertQuery);
             insertStatement.setDouble(1, price);
             insertStatement.setString(2, description);
             insertStatement.setInt(3, quantity);
-            insertStatement.setString(4, name);
+            insertStatement.setString(4, foodType.name());
+            insertStatement.setString(5, name);
+
             int rowsAffected = insertStatement.executeUpdate();
             if (rowsAffected == 0) throw new RuntimeException("Object not in database");
         }
@@ -93,8 +98,10 @@ public class FoodDAO implements IDAO<Food> {
                 Double price = resultSet.getDouble("price");
                 String description = resultSet.getString("description");
                 Integer quantity = resultSet.getInt("quantity");
-                //String foodType = resultSet.getString("foodType");
-                Food food = new Food(name, price, description, quantity);
+                String foodTypeStr = resultSet.getString("foodType");
+                FoodType foodType = FoodType.valueOf(foodTypeStr);
+
+                Food food = new Food(name, price, description, quantity, foodType);
                 result.add(food);
             }
         }

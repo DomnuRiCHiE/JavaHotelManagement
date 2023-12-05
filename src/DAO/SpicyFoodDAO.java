@@ -1,5 +1,6 @@
 package DAO;
 
+import Domain.Restaurant.FoodType;
 import Domain.Restaurant.SpicyFood;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -24,16 +25,18 @@ public class SpicyFoodDAO implements IDAO<SpicyFood> {
         Double price = spicyFood.getPrice();
         String description = spicyFood.getDescription();
         Integer quantity = spicyFood.getQuantity();
+        FoodType foodType = spicyFood.getFoodType();
         Integer spiceLevel = spicyFood.getSpiceLevel();
 
         try {
-            String insertQuery = "INSERT INTO spicyFood (name, price, description, quantity, spiceLevel) VALUES (?, ?, ?, ?, ?)";
+            String insertQuery = "INSERT INTO spicyFood (name, price, description, quantity, foodType, spiceLevel) VALUES (?, ?, ?, ?, ?, ?)";
             PreparedStatement insertStatement = connection.prepareStatement(insertQuery);
             insertStatement.setString(1, name);
             insertStatement.setDouble(2, price);
             insertStatement.setString(3, description);
             insertStatement.setInt(4, quantity);
-            insertStatement.setInt(5, spiceLevel);
+            insertStatement.setString(5, foodType.name());
+            insertStatement.setInt(6, spiceLevel);
             insertStatement.executeUpdate();
         }
         catch (SQLIntegrityConstraintViolationException e) {
@@ -50,16 +53,18 @@ public class SpicyFoodDAO implements IDAO<SpicyFood> {
         Double price = spicyFood.getPrice();
         String description = spicyFood.getDescription();
         Integer quantity = spicyFood.getQuantity();
+        FoodType foodType = spicyFood.getFoodType();
         Integer spiceLevel = spicyFood.getSpiceLevel();
 
         try {
-            String insertQuery = "UPDATE spicyFood SET price = ?, description = ?, quantity = ?, spiceLevel = ? WHERE name = ?";
+            String insertQuery = "UPDATE spicyFood SET price = ?, description = ?, quantity = ?, foodType = ?, spiceLevel = ? WHERE name = ?";
             PreparedStatement insertStatement = connection.prepareStatement(insertQuery);
             insertStatement.setDouble(1, price);
             insertStatement.setString(2, description);
             insertStatement.setInt(3, quantity);
-            insertStatement.setInt(4, spiceLevel);
-            insertStatement.setString(5, name);
+            insertStatement.setString(4, foodType.name());
+            insertStatement.setInt(5, spiceLevel);
+            insertStatement.setString(6, name);
             int rowsAffected = insertStatement.executeUpdate();
             if (rowsAffected == 0) throw new RuntimeException("Object not in database");
         }
@@ -96,8 +101,11 @@ public class SpicyFoodDAO implements IDAO<SpicyFood> {
                 Double price = resultSet.getDouble("price");
                 String description = resultSet.getString("description");
                 Integer quantity = resultSet.getInt("quantity");
-                Integer spiceLevel = resultSet.getInt("foodType");
-                SpicyFood spicyFood = new SpicyFood(name, price, description, quantity, spiceLevel);
+                Integer spiceLevel = resultSet.getInt("spiceLevel");
+                String foodTypeStr = resultSet.getString("foodType");
+                FoodType foodType = FoodType.valueOf(foodTypeStr);
+
+                SpicyFood spicyFood = new SpicyFood(name, price, description, quantity, foodType, spiceLevel);
                 result.add(spicyFood);
             }
         }

@@ -1,7 +1,7 @@
-// Check again
 package DAO;
 
 import Domain.Hotel.Room;
+import Domain.Hotel.RoomCategories;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -22,7 +22,7 @@ public class RoomDAO implements IDAO<Room> {
     @Override
     public void addEntity(Room room) {
         Integer roomNumber = room.getRoomNumber();
-        String roomType = room.getRoomType().toString();
+        RoomCategories roomType = room.getRoomType();
         Integer numberOfBeds = room.getNumberOfBeds();
         Boolean occupied = room.isOccupied();
         Integer price = room.getPrice();
@@ -31,7 +31,7 @@ public class RoomDAO implements IDAO<Room> {
             String insertQuery = "INSERT INTO room (roomNumber, roomType, numberOfBeds, occupied, price) VALUES (?, ?, ?, ?, ?)";
             PreparedStatement insertStatement = connection.prepareStatement(insertQuery);
             insertStatement.setInt(1, roomNumber);
-            insertStatement.setString(2, roomType);
+            insertStatement.setString(2, roomType.name());
             insertStatement.setInt(3, numberOfBeds);
             insertStatement.setBoolean(4, occupied);
             insertStatement.setInt(5, price);
@@ -48,7 +48,7 @@ public class RoomDAO implements IDAO<Room> {
     @Override
     public void updateEntity(Room room) {
         Integer roomNumber = room.getRoomNumber();
-        String roomType = room.getRoomType().toString();
+        RoomCategories roomType = room.getRoomType();
         Integer numberOfBeds = room.getNumberOfBeds();
         Boolean occupied = room.isOccupied();
         Integer price = room.getPrice();
@@ -57,7 +57,7 @@ public class RoomDAO implements IDAO<Room> {
             String insertQuery = "UPDATE room SET price = ?, roomType = ?, numberOfBeds = ?, occupied = ? WHERE roomNumber = ?";
             PreparedStatement insertStatement = connection.prepareStatement(insertQuery);
             insertStatement.setInt(1, price);
-            insertStatement.setString(2, roomType);
+            insertStatement.setString(2, roomType.name());
             insertStatement.setInt(3, numberOfBeds);
             insertStatement.setBoolean(4, occupied);
             insertStatement.setInt(5, roomNumber);
@@ -94,11 +94,12 @@ public class RoomDAO implements IDAO<Room> {
             while (resultSet.next())
             {
                 Integer roomNumber = resultSet.getInt("roomNumber");
-                //String roomType = resultSet.getString("roomType");
+                String roomTypeStr = resultSet.getString("roomType");
+                RoomCategories roomType = RoomCategories.valueOf(roomTypeStr);
                 Integer numberOfBeds = resultSet.getInt("numberOfBeds");
                 Boolean occupied = resultSet.getBoolean("occupied");
                 Integer price = resultSet.getInt("price");
-                Room room = new Room(roomNumber, numberOfBeds, occupied, price);
+                Room room = new Room(roomNumber, roomType, numberOfBeds, occupied, price);
                 result.add(room);
             }
         }

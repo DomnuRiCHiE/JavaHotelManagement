@@ -17,6 +17,14 @@ public class Room extends SubjectRoomOccupancy {
         this.occupied = false;
     }
 
+    public Room(int roomNumber, RoomCategories roomType, int numberOfBeds, Boolean occupied, int price) {
+        this.roomNumber = roomNumber;
+        this.roomType = roomType;
+        this.numberOfBeds = numberOfBeds;
+        this.price = price;
+        this.occupied = false;
+    }
+
     public Room(int roomNumber, int numberOfBeds, Boolean occupied, int price) {
         this.roomNumber = roomNumber;
         this.numberOfBeds = numberOfBeds;
