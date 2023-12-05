@@ -43,4 +43,16 @@ public class Item {
                 ", description='" + description + '\'' +
                 '}';
     }
+
+    public Item() {
+        this.name = "null";
+        this.price = 0;
+        this.description = "null";
+    }
+
+    private final static Item nullItem = new Item();
+
+    public static Item getNullItem() {
+        return nullItem;
+    }
 }

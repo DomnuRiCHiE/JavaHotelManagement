@@ -1,6 +1,6 @@
 package Domain.People;
 
-public abstract class Person implements Login {
+public class Person implements Login {
     protected String name;
     protected String email;
     protected String phone_number;
@@ -27,5 +27,17 @@ public abstract class Person implements Login {
     @Override
     public boolean login(String username, String password) {
         return false;
+    }
+
+    private final static Person nullperson = new Person();
+
+    public Person() {
+        this.name = "null";
+        this.email = "null";
+        this.phone_number = "null";
+    }
+
+    public static Person getNullPerson() {
+        return nullperson;
     }
 }

@@ -14,6 +14,12 @@ public class Client extends Person{
         this.setPassword(password);
     }
 
+    public Client(String name, String email, String phoneNumber) {
+        this.setName(name);
+        this.setEmail(email);
+        this.setPhone_number(phoneNumber);
+    }
+
     public String getPassword() {
         return password;
     }

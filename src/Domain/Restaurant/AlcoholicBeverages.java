@@ -33,6 +33,17 @@ public class AlcoholicBeverages extends Beverage{
         return alcoholPercentage == that.alcoholPercentage;
     }
 
+    private final static AlcoholicBeverages nullAlcoholicBeverage = new AlcoholicBeverages();
+
+    public AlcoholicBeverages() {
+        super();
+        this.alcoholPercentage = 0;
+    }
+
+    public static AlcoholicBeverages getNullAlcoholicBeverage() {
+        return nullAlcoholicBeverage;
+    }
+
 //    @Override
 //    public int hashCode() {
 //        return Objects.hash(alcoholPercentage);
