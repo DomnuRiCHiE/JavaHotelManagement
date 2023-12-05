@@ -102,7 +102,7 @@ public class BookingDAO implements IDAO<Booking> {
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
                 int roomNumber = resultSet.getInt("room_id");
-                Room room = getRoomByNumber(roomNumber); // You'll need a method to get a room by its number
+                Room room = getRoomByNumber(roomNumber);
                 bookedRooms.add(room);
             }
         } catch (SQLException e) {
