@@ -3,13 +3,12 @@ package Domain.Hotel;
 import Domain.Payment;
 import Domain.PaymentMethod;
 import Domain.People.Client;
-
-import java.util.ArrayList;
+import java.util.Set;
 
 public class Booking implements Payment {
     private String ID;
     private Client client;
-    private ArrayList<Room> bookedRooms;
+    private Set<Room> bookedRooms;
     private PaymentMethod paymentMethod;
 
     public Booking() {}
@@ -30,11 +29,11 @@ public class Booking implements Payment {
         this.client = client;
     }
 
-    public ArrayList<Room> getBookedRooms() {
+    public Set<Room> getBookedRooms() {
         return bookedRooms;
     }
 
-    public void setBookedRooms(ArrayList<Room> bookedRooms) {
+    public void setBookedRooms(Set<Room> bookedRooms) {
         this.bookedRooms = bookedRooms;
     }
 
