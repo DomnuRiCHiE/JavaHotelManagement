@@ -20,7 +20,7 @@ public class SpicyFoodDAO implements IDAO<SpicyFood> {
     }
 
     @Override
-    public void addEntity(SpicyFood spicyFood) {
+    public void addEntityDAO(SpicyFood spicyFood) {
         String name = spicyFood.getName();
         Double price = spicyFood.getPrice();
         String description = spicyFood.getDescription();
@@ -48,7 +48,7 @@ public class SpicyFoodDAO implements IDAO<SpicyFood> {
     }
 
     @Override
-    public void updateEntity(SpicyFood spicyFood) {
+    public void updateEntityDAO(SpicyFood spicyFood) {
         String name = spicyFood.getName();
         Double price = spicyFood.getPrice();
         String description = spicyFood.getDescription();
@@ -74,7 +74,7 @@ public class SpicyFoodDAO implements IDAO<SpicyFood> {
     }
 
     @Override
-    public void deleteEntity(SpicyFood spicyFood) {
+    public void deleteEntityDAO(SpicyFood spicyFood) {
         String name = spicyFood.getName();
         try {
             String insertQuery = "DELETE FROM spicyFood WHERE name = ?";
@@ -89,7 +89,7 @@ public class SpicyFoodDAO implements IDAO<SpicyFood> {
     }
 
     @Override
-    public ArrayList<SpicyFood> getAllEntities() {
+    public ArrayList<SpicyFood> getAllEntitiesDAO() {
         ArrayList<SpicyFood> result = new ArrayList<>();
         try {
             String query = "SELECT * FROM spicyFood ORDER BY name;";

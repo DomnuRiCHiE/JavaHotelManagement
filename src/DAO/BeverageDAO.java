@@ -19,7 +19,7 @@ public class BeverageDAO implements IDAO<Beverage> {
     }
 
     @Override
-    public void addEntity(Beverage beverage) {
+    public void addEntityDAO(Beverage beverage) {
         String name = beverage.getName();
         Double price = beverage.getPrice();
         String description = beverage.getDescription();
@@ -43,7 +43,7 @@ public class BeverageDAO implements IDAO<Beverage> {
     }
 
     @Override
-    public void updateEntity(Beverage beverage) {
+    public void updateEntityDAO(Beverage beverage) {
         String name = beverage.getName();
         Double price = beverage.getPrice();
         String description = beverage.getDescription();
@@ -65,7 +65,7 @@ public class BeverageDAO implements IDAO<Beverage> {
     }
 
     @Override
-    public void deleteEntity(Beverage beverage) {
+    public void deleteEntityDAO(Beverage beverage) {
         String name = beverage.getName();
         try {
             String insertQuery = "DELETE FROM beverage WHERE name = ?";
@@ -80,7 +80,7 @@ public class BeverageDAO implements IDAO<Beverage> {
     }
 
     @Override
-    public ArrayList<Beverage> getAllEntities() {
+    public ArrayList<Beverage> getAllEntitiesDAO() {
         ArrayList<Beverage> result = new ArrayList<>();
         try {
             String query = "SELECT * FROM beverages ORDER BY name;";

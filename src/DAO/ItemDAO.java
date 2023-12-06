@@ -19,7 +19,7 @@ public class ItemDAO implements IDAO<Item> {
     }
 
     @Override
-    public void addEntity(Item item) {
+    public void addEntityDAO(Item item) {
         String name = item.getName();
         Double price = item.getPrice();
         String description = item.getDescription();
@@ -41,7 +41,7 @@ public class ItemDAO implements IDAO<Item> {
     }
 
     @Override
-    public void updateEntity(Item item) {
+    public void updateEntityDAO(Item item) {
         String name = item.getName();
         Double price = item.getPrice();
         String description = item.getDescription();
@@ -61,7 +61,7 @@ public class ItemDAO implements IDAO<Item> {
     }
 
     @Override
-    public void deleteEntity(Item item) {
+    public void deleteEntityDAO(Item item) {
         String name = item.getName();
         try {
             String insertQuery = "DELETE FROM item WHERE name = ?";
@@ -76,7 +76,7 @@ public class ItemDAO implements IDAO<Item> {
     }
 
     @Override
-    public ArrayList<Item> getAllEntities() {
+    public ArrayList<Item> getAllEntitiesDAO() {
         ArrayList<Item> result = new ArrayList<>();
         try {
             String query = "SELECT * FROM item ORDER BY name;";

@@ -19,12 +19,14 @@ public class AlcoholicBeverageDAO implements IDAO<AlcoholicBeverages> {
     }
 
     @Override
-    public void addEntity(AlcoholicBeverages alcoholicBeverage) {
+    public void addEntityDAO(AlcoholicBeverages alcoholicBeverage) {
         String name = alcoholicBeverage.getName();
         Double price = alcoholicBeverage.getPrice();
         String description = alcoholicBeverage.getDescription();
         Integer volume = alcoholicBeverage.getVolume();
         Integer alcoholPercentage = alcoholicBeverage.getAlcoholPercentage();
+
+
 
         try {
             String insertQuery = "INSERT INTO alcoholicBeverages (name, price, description, volume, alcoholPercentage) VALUES (?, ?, ?, ? ,?)";
@@ -45,7 +47,7 @@ public class AlcoholicBeverageDAO implements IDAO<AlcoholicBeverages> {
     }
 
     @Override
-    public void updateEntity(AlcoholicBeverages alcoholicBeverage) {
+    public void updateEntityDAO(AlcoholicBeverages alcoholicBeverage) {
         String name = alcoholicBeverage.getName();
         Double price = alcoholicBeverage.getPrice();
         String description = alcoholicBeverage.getDescription();
@@ -69,7 +71,7 @@ public class AlcoholicBeverageDAO implements IDAO<AlcoholicBeverages> {
     }
 
     @Override
-    public void deleteEntity(AlcoholicBeverages alcoholicBeverage) {
+    public void deleteEntityDAO(AlcoholicBeverages alcoholicBeverage) {
         String name = alcoholicBeverage.getName();
         try {
             String insertQuery = "DELETE FROM alcoholicBeverages WHERE name = ?";
@@ -84,7 +86,7 @@ public class AlcoholicBeverageDAO implements IDAO<AlcoholicBeverages> {
     }
 
     @Override
-    public ArrayList<AlcoholicBeverages> getAllEntities() {
+    public ArrayList<AlcoholicBeverages> getAllEntitiesDAO() {
         ArrayList<AlcoholicBeverages> result = new ArrayList<>();
         try {
             String query = "SELECT * FROM alcoholicBeverages ORDER BY name;";

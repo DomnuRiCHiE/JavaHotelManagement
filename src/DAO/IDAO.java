@@ -5,8 +5,8 @@ import java.util.ArrayList;
 
 public interface IDAO<Entity> {
     Connection connection = DatabaseConnection.getConnection();
-    void addEntity(Entity entity);
-    void updateEntity(Entity entity);
-    void deleteEntity(Entity entity);
-    ArrayList<Entity> getAllEntities();
+    void addEntityDAO(Entity entity);
+    void updateEntityDAO(Entity entity);
+    void deleteEntityDAO(Entity entity);
+    ArrayList<Entity> getAllEntitiesDAO();
 }
