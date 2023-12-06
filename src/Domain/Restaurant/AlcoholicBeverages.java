@@ -20,7 +20,8 @@ public class AlcoholicBeverages extends Beverage{
 
     @Override
     public String toString() {
-        return "AlcoholicBeverages{" +
+
+        return super.toString() + "AlcoholicBeverages{" +
                 "alcoholPercentage=" + alcoholPercentage +
                 '}';
     }
