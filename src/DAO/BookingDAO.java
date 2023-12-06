@@ -22,7 +22,7 @@ public class BookingDAO implements IDAO<Booking> {
     }
 
     @Override
-    public void addEntity(Booking booking) {
+    public void addEntityDAO(Booking booking) {
         try {
             String insertQuery = "INSERT INTO booking (id, client_name, payment_method) VALUES (?, ?, ?)";
             PreparedStatement insertStatement = connection.prepareStatement(insertQuery);
@@ -38,7 +38,7 @@ public class BookingDAO implements IDAO<Booking> {
     }
 
     @Override
-    public void updateEntity(Booking booking) {
+    public void updateEntityDAO(Booking booking) {
         try {
             String updateQuery = "UPDATE booking SET client_id = ?, payment_method = ? WHERE id = ?";
             PreparedStatement updateStatement = connection.prepareStatement(updateQuery);
@@ -57,7 +57,7 @@ public class BookingDAO implements IDAO<Booking> {
     }
 
     @Override
-    public void deleteEntity(Booking booking) {
+    public void deleteEntityDAO(Booking booking) {
         try {
             removeRoomsFromBooking(booking);
 
@@ -72,7 +72,7 @@ public class BookingDAO implements IDAO<Booking> {
     }
 
     @Override
-    public ArrayList<Booking> getAllEntities() {
+    public ArrayList<Booking> getAllEntitiesDAO() {
         ArrayList<Booking> result = new ArrayList<>();
         try {
             String query = "SELECT * FROM booking";

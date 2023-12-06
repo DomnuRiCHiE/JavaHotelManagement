@@ -21,7 +21,7 @@ public class ClientDAO implements IDAO<Person> {
     }
 
     @Override
-    public void addEntity(Person person) {
+    public void addEntityDAO(Person person) {
         String name = person.getName();
         String email = person.getEmail();
         String phoneNumber = person.getPhone_number();
@@ -43,7 +43,7 @@ public class ClientDAO implements IDAO<Person> {
     }
 
     @Override
-    public void updateEntity(Person person) {
+    public void updateEntityDAO(Person person) {
         String name = person.getName();
         String email = person.getEmail();
         String phoneNumber = person.getPhone_number();
@@ -62,7 +62,7 @@ public class ClientDAO implements IDAO<Person> {
     }
 
     @Override
-    public void deleteEntity(Person person) {
+    public void deleteEntityDAO(Person person) {
         String phoneNumber = person.getPhone_number();
         try {
             String insertQuery = "DELETE FROM person WHERE phoneNumber = ?";
@@ -77,7 +77,7 @@ public class ClientDAO implements IDAO<Person> {
     }
 
     @Override
-    public ArrayList<Person> getAllEntities() {
+    public ArrayList<Person> getAllEntitiesDAO() {
         ArrayList<Person> result = new ArrayList<>();
         try {
             String query = "SELECT * FROM person ORDER BY phoneNumber;";

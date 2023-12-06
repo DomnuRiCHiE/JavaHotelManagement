@@ -20,7 +20,7 @@ public class RoomDAO implements IDAO<Room> {
     }
 
     @Override
-    public void addEntity(Room room) {
+    public void addEntityDAO(Room room) {
         Integer roomNumber = room.getRoomNumber();
         RoomCategories roomType = room.getRoomType();
         Integer numberOfBeds = room.getNumberOfBeds();
@@ -46,7 +46,7 @@ public class RoomDAO implements IDAO<Room> {
     }
 
     @Override
-    public void updateEntity(Room room) {
+    public void updateEntityDAO(Room room) {
         Integer roomNumber = room.getRoomNumber();
         RoomCategories roomType = room.getRoomType();
         Integer numberOfBeds = room.getNumberOfBeds();
@@ -70,7 +70,7 @@ public class RoomDAO implements IDAO<Room> {
     }
 
     @Override
-    public void deleteEntity(Room room) {
+    public void deleteEntityDAO(Room room) {
         Integer roomNumber = room.getRoomNumber();
         try {
             String insertQuery = "DELETE FROM room WHERE roomNumber = ?";
@@ -85,7 +85,7 @@ public class RoomDAO implements IDAO<Room> {
     }
 
     @Override
-    public ArrayList<Room> getAllEntities() {
+    public ArrayList<Room> getAllEntitiesDAO() {
         ArrayList<Room> result = new ArrayList<>();
         try {
             String query = "SELECT * FROM room ORDER BY roomNumber;";

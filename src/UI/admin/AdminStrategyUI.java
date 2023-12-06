@@ -6,14 +6,17 @@ import Controller.Hotel.RoomController;
 import Controller.Observer.Observers.ObserverRoomOccupancy;
 import Controller.Observer.Subjects.SubjectRoomOccupancy;
 import Controller.People.ClientController;
+import Controller.Restaurant.AlcoholicBeveragesController;
+import DAO.AlcoholicBeverageDAO;
 import Domain.Hotel.Room;
 import Domain.Hotel.RoomCategories;
 import Domain.People.Admin;
 import Domain.People.Client;
+import Domain.Restaurant.AlcoholicBeverages;
+import Repository.Restaurant.AlcoholicBeverageRepository;
 import UI.ReturnInput;
 import UI.UIStrategy;
 
-import javax.security.auth.Subject;
 import java.util.ArrayList;
 import java.util.Objects;
 import java.util.Scanner;
@@ -27,6 +30,8 @@ public class AdminStrategyUI implements ReturnInput, UIStrategy {
     private HotelController hotelController;
     private RoomController roomController;
 
+    private AlcoholicBeveragesController alcoholicBeveragesController;
+
     private Admin admin;
 
     public AdminStrategyUI(BookingController bookingController, HotelController hotelController, RoomController roomController, ClientController clientController) {
@@ -39,37 +44,65 @@ public class AdminStrategyUI implements ReturnInput, UIStrategy {
                 "5. manageRestaurant\n" +
                 "6. modifyBookingInfo\n" +
                 "7. deleteClientFromHotel\n" +
-                "8. deleteRoomFromHotel\n" +
-                "9. manageRoom\n" +
-                "10. addRoomToHotel\n" +
+                "8. list all alcoholic beverages\n" +
+                "9. delete alcoholic beverage\n" +
+                "10. add alcoholic beverage\n" +
                 "11. observer pattern\n" +
-                "12. Go back";
+                "12. modify alcoholic beverage\n" +
+                "0. Go back";
         this.clientController = clientController;
         this.bookingController = bookingController;
         this.hotelController = hotelController;
         this.roomController = roomController;
+        this.alcoholicBeveragesController = new AlcoholicBeveragesController(AlcoholicBeverageRepository.getInstance(),AlcoholicBeverageDAO.getInstance());
     }
 
     public void run() {
         while (true) {
             System.out.println(this.adminContextMenuActions);
             String option = returnInput();
-            if (Objects.equals(option,"12")){
+            if(Objects.equals(option, "0")){
                 break;
             }
             switch (option) {
-                case "1": getClientsInfoList(); break;
-                case "2": updateClient(); break;
-                case "3": searchBookingByClientName(); break;
-                case "4": assignRestaurantToHotel(); break;
-                case "5": manageRestaurant(); break;
-                case "6": updateBookingInfo(); break;
-                case "7": deleteClientFromHotel(); break;
-                case "8": deleteRoomFromHotel(); break;
-                case "9": manageRoom(); break;
-                case "10": addRoomToHotel(); break;
-                case "11": observerPattern(); break;
-                default: break;
+                case "1":
+                    getClientsInfoList();
+                    break;
+                case "2":
+                    updateClient();
+                    break;
+                case "3":
+                    searchBookingByClientName();
+                    break;
+                case "4":
+                    assignRestaurantToHotel();
+                    break;
+                case "5":
+                    manageRestaurant();
+                    break;
+                case "6":
+                    updateBookingInfo();
+                    break;
+                case "7":
+                    deleteClientFromHotel();
+                    break;
+                case "8":
+                    listALlAlcoholicBeverages();
+                    break;
+                case "9":
+                    deleteAlcoholicBeverage();
+                    break;
+                case "10":
+                    addAlcoholicBeverage();
+                    break;
+                case "11":
+                    observerPattern();
+                    break;
+                case "12":
+                    modifyAlcoholicBeverage();
+                    break;
+                case "0":
+                    break;
             }
         }
     }
@@ -81,7 +114,7 @@ public class AdminStrategyUI implements ReturnInput, UIStrategy {
         subjectRoomOccupancy.addObserver(observerRoomOccupancy);
 
         Scanner scanner = new Scanner(System.in);
-        while(true) {
+        while (true) {
             System.out.println("1. Make a change to notify the observers");
             System.out.println("2. See the last update");
             System.out.println("3. Exit");
@@ -110,54 +143,107 @@ public class AdminStrategyUI implements ReturnInput, UIStrategy {
         }
     }
 
+    public void modifyAlcoholicBeverage() {
+        System.out.println("Name:");
+        String name = returnInput();
+        ArrayList<AlcoholicBeverages> objects = alcoholicBeveragesController.getAll();
+        System.out.println("New price:");
+
+        Integer price = Integer.parseInt(returnInput());
+        System.out.println("New description:");
+        String description = returnInput();
+        System.out.println("New volume:");
+        Integer volume = Integer.parseInt(returnInput());
+        System.out.println("New percentage:");
+        Integer percentage = Integer.parseInt(returnInput());
+        for (AlcoholicBeverages a : objects) {
+            if (Objects.equals(a.getName(), name)) {
+                alcoholicBeveragesController.update(a, new AlcoholicBeverages(a.getName(), price, description, volume, percentage));
+                System.out.println("Product has been changed");
+                return;
+            }
+        }
+        System.out.println("Product not found...");
+    }
+
     public void assignRestaurantToHotel() {
         System.out.println("Under Construction");
     }
+
     public void manageRestaurant() {
         System.out.println("Under Construction");
     }// uses ManageRestaurantUI
-    public void manageRoom(){
-        System.out.println("Under Construction");
-    } // uses ManageRoomUI
+
+    public void deleteAlcoholicBeverage() {
+        System.out.println("Name:");
+        String name = returnInput();
+        ArrayList<AlcoholicBeverages> objects = alcoholicBeveragesController.getAll();
+        for (AlcoholicBeverages a: objects){
+            if(Objects.equals(a.getName(), name)) {
+                alcoholicBeveragesController.delete(a);
+                System.out.println("Product deleted successfully!");
+                return;
+            }
+        }
+        System.out.println("Product not found...");
+    }
+
     public void getClientsInfoList() {
         Client client = searchClientByName();
         System.out.println(clientController.getClientInfoList(client));
     }
+
     public Client searchClientByName() {
         System.out.println("Client name: ");
         String name = returnInput();
         ArrayList<Client> clients = clientController.getAll();
         Client client_to_be_changed = new Client();
-        for (Client client : clients){
-            if (Objects.equals(client.getName(), name)){
+        for (Client client : clients) {
+            if (Objects.equals(client.getName(), name)) {
                 client_to_be_changed = client;
                 break;
             }
         }
         return client_to_be_changed;
     }
-    public void addRoomToHotel() {
-        System.out.println("Under Construction");
-//        System.out.println("Room number: ");
-//        int number =  Integer.parseInt(returnInput());
-////      try catch  search room number in controller to see if it exists: update/fail?
-//        System.out.println("Room type: ");
-//        String type = returnInput();
-////      try catch  RoomCategories room_type = changeToRoomCategory(type);
-//        System.out.println("Number of beds: ");
-//        int beds = Integer.parseInt(returnInput());
-//        System.out.println("Room price: ");
-//        int price = Integer.parseInt(returnInput());
-////      try catch  controller.addRoom(number,type,beds,price)
+
+    public void listALlAlcoholicBeverages() {
+        System.out.println("List of Alcoholic Beverages");
+        ArrayList<AlcoholicBeverages> objects = alcoholicBeveragesController.getAll();
+        for (AlcoholicBeverages a: objects){
+            System.out.println(a.toString());
+        }
     }
-    public void deleteRoomFromHotel() {
-        System.out.println("Room number: ");
+
+    public void addAlcoholicBeverage() {
+        System.out.println("Name: ");
+        String name = returnInput();
+        ArrayList<AlcoholicBeverages> objects = alcoholicBeveragesController.getAll();
+        for (AlcoholicBeverages a: objects){
+            if(Objects.equals(a.getName(), name)){
+                System.out.println("Name already used...");
+                return;
+            }
+        }
+        System.out.println("Price:");
+        Integer price = Integer.parseInt(returnInput());
+        System.out.println("Description:");
+        String description = returnInput();
+        System.out.println("Volume:");
+        Integer volume = Integer.parseInt(returnInput());
+        System.out.println("Percentage:");
+        Integer percentage = Integer.parseInt(returnInput());
+        alcoholicBeveragesController.add(new AlcoholicBeverages(name,price,description,volume,percentage));
+        System.out.println("New object added!");
+
 //      try catch  controller.deleteRoom(Integer.parseInt(returnInput));
     }
+
     public void deleteClientFromHotel() {
         Client client_to_be_changed = searchClientByName();
         clientController.delete(client_to_be_changed);
     }
+
     public void updateClient() {
         Client client_to_be_changed = searchClientByName();
         Client client1 = client_to_be_changed;
@@ -168,7 +254,7 @@ public class AdminStrategyUI implements ReturnInput, UIStrategy {
                 "- Address\n" +
                 "- Exit\n");
         String option = returnInput();
-        switch (option){
+        switch (option) {
             case "Name": {
                 System.out.println("New name: ");
                 String name = returnInput();
@@ -176,7 +262,7 @@ public class AdminStrategyUI implements ReturnInput, UIStrategy {
                 clientController.update(client_to_be_changed, client1);
                 break;
             }
-            case "Phone Number":{
+            case "Phone Number": {
                 System.out.println("New phone number: ");
                 String number = returnInput();
                 client1.setPhone_number(number);
@@ -200,15 +286,17 @@ public class AdminStrategyUI implements ReturnInput, UIStrategy {
         }
 
     }
+
     public void updateBookingInfo() {
         System.out.println("Under Construction");
     }
+
     public void searchBookingByClientName() {
         System.out.println("Under Construction");
     }
 
     @Override
-    public String returnInput(){
+    public String returnInput() {
         Scanner reader = new Scanner(System.in);
         return reader.nextLine();
     }
@@ -218,7 +306,7 @@ public class AdminStrategyUI implements ReturnInput, UIStrategy {
         System.out.println("----------------Login------------------\n" +
                 "Password: ");
         String password = returnInput();
-        if (!admin.login("admin", password)){
+        if (!admin.login("admin", password)) {
             return;
         }
         run();

@@ -18,7 +18,7 @@ public class Beverage extends Item{
 
     @Override
     public String toString() {
-        return "Beverages{" +
+        return super.toString() + "Beverages{" +
                 "volume=" + volume +
                 '}';
     }

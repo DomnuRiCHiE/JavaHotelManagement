@@ -9,6 +9,4 @@ public interface ManageRoomUI {
     public void getRoomInfo();
     public void changeOccupancyStatus();
     public void changePrice();
-
-
 }
