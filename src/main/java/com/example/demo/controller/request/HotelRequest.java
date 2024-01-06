@@ -1,4 +1,4 @@
-package com.example.demo.controller.request;
+package com.example.demo.Controller.Request;
 
 import jakarta.persistence.Column;
 import lombok.AllArgsConstructor;

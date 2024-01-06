@@ -1,7 +1,7 @@
-package com.example.demo.serive;
+package com.example.demo.Service;
 
 import com.example.demo.Models.Hotel;
-import com.example.demo.repository.HotelRepository;
+import com.example.demo.Repository.JPA.HotelRepository;
 import org.springframework.stereotype.Service;
 
 @Service
