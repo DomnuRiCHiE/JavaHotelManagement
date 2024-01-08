@@ -1,16 +1,10 @@
 package com.example.demo.Models;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-
-import java.util.ArrayList;
-
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.persistence.*;
+import lombok.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "hotel")
@@ -20,22 +14,31 @@ import java.util.ArrayList;
 @Setter
 public class Hotel extends BaseEntity{
     @Column
-    private static Hotel instance;
-    @Column
     private String name;
     @Column
     private String restaurant;
 
+    @JsonIgnore
+    @OneToMany(mappedBy = "hotelBooking")
+    private Set<Booking> bookings = new HashSet<>();
 
-    public static Hotel getInstance() {
-        if (instance == null) {
-            instance = new Hotel();
-        }
-        return instance;
-    }
-//    @OneToMany
-//    private ArrayList<> booking;
-//    private ArrayList<String> rooms;
-//    private ArrayList<String> clients;
+    @JsonIgnore
+    @OneToMany(mappedBy = "hotelRooms")
+    private Set<Room> rooms = new HashSet<>();
 
+    @ManyToMany
+    @JoinTable(
+            name = "hotelClients",
+            joinColumns = @JoinColumn(name = "hotelID"),
+            inverseJoinColumns = @JoinColumn(name = "clientID")
+    )
+    private Set<Client> clients = new HashSet<>();
+
+    @ManyToMany
+    @JoinTable(
+            name = "hotelEmployees",
+            joinColumns = @JoinColumn(name = "hotelID"),
+            inverseJoinColumns = @JoinColumn(name = "employeeID")
+    )
+    private Set<Employee> employees = new HashSet<>();
 }

@@ -1,4 +1,40 @@
 package com.example.demo.Models;
 
-public class RestaurantOrder {
+import com.example.demo.Models.Enums.PaymentMethod;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.persistence.*;
+import lombok.*;
+
+import java.util.HashSet;
+import java.util.Objects;
+import java.util.Set;
+
+@Entity
+@Table(name = "restaurantOrder")
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
+public class RestaurantOrder extends BaseEntity{
+    //@Column
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "clientID", referencedColumnName = "id")
+    private Client client;
+
+    //@Column
+    @JsonIgnore
+    @OneToMany(mappedBy = "restaurantOrder")
+    private Set<Item> items = new HashSet<>();
+
+    @Column
+    @Enumerated
+    private PaymentMethod paymentMethod;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        RestaurantOrder that = (RestaurantOrder) o;
+        return Objects.equals(id, that.id);
+    }
 }

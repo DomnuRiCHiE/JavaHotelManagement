@@ -1,4 +1,5 @@
 package com.example.demo.Models.Enums;
 
-public class PaymentMethod {
+public enum PaymentMethod {
+    none, cash, card, voucher, cheque
 }
