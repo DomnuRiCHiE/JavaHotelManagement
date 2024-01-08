@@ -21,6 +21,7 @@ public class Restaurant extends BaseEntity{
     //@JoinColumn(name = "restaurantID")
     //private Set<Menu> menus = new HashSet<>();
 
+    //
     @JsonIgnore
     @ManyToMany(mappedBy = "restaurantMenus")
     private Set<Menu> restaurantMenus = new HashSet<>();

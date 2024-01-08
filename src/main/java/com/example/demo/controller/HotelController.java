@@ -20,7 +20,7 @@ public class HotelController {
     @GetMapping(value = "add")
     public String add() {
 
-        var hotel = Hotel.getInstance();
+        //var hotel = Hotel.getInstance();
         return "Sa adaugat";
     }
 }

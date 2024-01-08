@@ -21,6 +21,7 @@ public class Menu extends BaseEntity{
     @OneToMany(mappedBy = "menu")
     private Set<Item> items = new HashSet<>();
 
+    //CascadeType.Persist,.Merge
     @ManyToMany
     @JoinTable(
             name = "restaurantMenus",

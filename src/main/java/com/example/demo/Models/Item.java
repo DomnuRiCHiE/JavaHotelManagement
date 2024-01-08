@@ -22,6 +22,8 @@ public class Item extends BaseEntity {
     @Column
     protected String description;
 
+
+
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "menuID", referencedColumnName = "id")
     private Menu menu;
@@ -29,6 +31,13 @@ public class Item extends BaseEntity {
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "restaurantOrderID", referencedColumnName = "id")
     private RestaurantOrder restaurantOrder;
+
+    public Item(String name, Double price, String description) {
+        super();
+        this.name = name;
+        this.price = price;
+        this.description = description;
+    }
 
     //public Item copy() {
     //    return new Item(name, price, description);
