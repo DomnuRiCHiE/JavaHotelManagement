@@ -18,8 +18,8 @@ public abstract class BaseService<Entity, IdType> implements IService<Entity, Id
     }
 
     @Override
-    public Optional<Entity> add(Entity object) {
-        if (repository.exists(Example.of(object))); //add errors
+    public Optional<Entity> add(Entity object) throws Exception {
+        if (repository.exists(Example.of(object))) throw new Exception();
         return Optional.of(repository.save(object));
     }
 

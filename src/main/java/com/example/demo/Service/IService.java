@@ -6,7 +6,7 @@ import java.util.Optional;
 import java.util.UUID;
 
 public interface IService<E, I> {
-    Optional<E> add(E object);
+    Optional<E> add(E object) throws Exception;
 
     Optional<List<E>> getAll();
 
