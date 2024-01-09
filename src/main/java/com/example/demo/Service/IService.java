@@ -12,7 +12,7 @@ public interface IService<E, I> {
 
     Optional<E> getEntityByKey(I id);
 
-    Optional<Entity> update(UUID id, Entity object) ;
+    Optional<E> update(I id, E object) ;
 
-    Optional<Entity> delete(UUID id) ;
+    Optional<E> delete(I id) ;
 }

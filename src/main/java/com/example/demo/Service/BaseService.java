@@ -32,6 +32,27 @@ public abstract class BaseService<Entity, IdType> implements IService<Entity, Id
     }
 
     @Override
+    public Optional<Entity> update(IdType id, Entity object) {
+
+        if (!repository.existsByID(id)){
+            return Optional.empty();
+        }
+        repository.deleteById(id);
+        return Optional.of(repository.save(object));
+
+    }
+
+    @Override
+    public Optional<Entity> delete(IdType id) {
+        if (!repository.existsByID(id)){
+            return Optional.empty();
+        }
+        Optional<Entity> object_to_remove = repository.findById(id);
+        repository.deleteById(id);
+        return object_to_remove;
+    }
+
+    @Override
     public Optional<Entity> getEntityByKey(IdType id) {
         return repository.findById(id);
     }
