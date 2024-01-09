@@ -1,0 +1,11 @@
+com.example.demo
+com.example.demo.Controller
+com.example.demo.Factory
+com.example.demo.Models
+com.example.demo.Models.Enums
+com.example.demo.Proxy
+com.example.demo.Repository.InMemory
+com.example.demo.Repository.JPA
+com.example.demo.Service
+com.example.demo.Service.Observer
+com.example.demo.Service.Subject
