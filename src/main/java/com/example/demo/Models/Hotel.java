@@ -23,8 +23,8 @@ public class Hotel extends BaseEntity{
     private Set<Booking> bookings = new HashSet<>();
 
     @JsonIgnore
-    @OneToMany(mappedBy = "hotelRooms")
-    private Set<Room> rooms = new HashSet<>();
+    @OneToMany(mappedBy = "bookedRooms")
+    private Set<Room> bookedRooms = new HashSet<>();
 
     @ManyToMany
     @JoinTable(
@@ -32,7 +32,7 @@ public class Hotel extends BaseEntity{
             joinColumns = @JoinColumn(name = "hotelID"),
             inverseJoinColumns = @JoinColumn(name = "clientID")
     )
-    private Set<Client> clients = new HashSet<>();
+    private Set<Client> hotelClients = new HashSet<>();
 
     @ManyToMany
     @JoinTable(
@@ -40,5 +40,5 @@ public class Hotel extends BaseEntity{
             joinColumns = @JoinColumn(name = "hotelID"),
             inverseJoinColumns = @JoinColumn(name = "employeeID")
     )
-    private Set<Employee> employees = new HashSet<>();
+    private Set<Employee> hotelEmployees = new HashSet<>();
 }
