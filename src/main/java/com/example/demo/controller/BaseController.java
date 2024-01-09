@@ -33,9 +33,9 @@ public abstract class BaseController<Type, IdType> implements IController<Type, 
     }
 
     //@Override
-    public ResponseEntity<Entity> update(UUID id, Entity object) {
+    public ResponseEntity<Type> update(IdType id, Type object) {
         try {
-            Optional<Entity> oldObject = service.update(id, object);
+            Optional<Type> oldObject = service.update(id, object);
             return oldObject.map(type
                     -> ResponseEntity.status(HttpStatus.OK).body(oldObject.get())).orElseGet(()
                     -> ResponseEntity.internalServerError().build()
@@ -48,9 +48,9 @@ public abstract class BaseController<Type, IdType> implements IController<Type, 
     }
 
     //@Override
-    public ResponseEntity<Entity> delete(UUID id) {
+    public ResponseEntity<Type> delete(IdType id) {
         try {
-            Optional<Entity> deletedObject = service.delete(id);
+            Optional<Type> deletedObject = service.delete(id);
             return deletedObject.map(type
                     -> ResponseEntity.status(HttpStatus.OK).body(deletedObject.get())).orElseGet(()
                     -> ResponseEntity.internalServerError().build()
