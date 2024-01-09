@@ -32,7 +32,7 @@ public abstract class BaseController<Type, IdType> implements IController<Type, 
         }
     }
 
-    @Override
+    //@Override
     public ResponseEntity<Entity> update(UUID id, Entity object) {
         try {
             Optional<Entity> oldObject = service.update(id, object);
@@ -47,7 +47,7 @@ public abstract class BaseController<Type, IdType> implements IController<Type, 
         }
     }
 
-    @Override
+    //@Override
     public ResponseEntity<Entity> delete(UUID id) {
         try {
             Optional<Entity> deletedObject = service.delete(id);
