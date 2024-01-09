@@ -5,6 +5,10 @@ import com.example.demo.Proxy.IRoomRepository;
 
 import java.util.*;
 
+/**
+ * InMemoryRepository for Room entity
+ */
+
 public class RoomInMemoryRepository extends InMemoryRepository<Room, UUID> implements IRoomRepository {
 
     private RoomInMemoryRepository() {

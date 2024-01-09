@@ -4,6 +4,10 @@ import com.example.demo.Factory.RepoTypes;
 import com.example.demo.Proxy.RoomProxyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+/**
+ * Service for running the app
+ */
+
 
 @Service
 public class MainService {

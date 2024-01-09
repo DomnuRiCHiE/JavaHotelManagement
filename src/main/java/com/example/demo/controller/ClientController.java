@@ -8,6 +8,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.UUID;
 
+/**
+ * Controller class for implementing client business logic
+ * Extends BaseController
+ */
+
 @RestController
 @RequestMapping("/client")
 public class ClientController extends BaseController<Client, UUID>{

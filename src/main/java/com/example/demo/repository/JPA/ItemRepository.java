@@ -6,6 +6,9 @@ import org.springframework.stereotype.Repository;
 
 import java.util.UUID;
 
+/**
+ * interface for an Item JpaRepository
+ */
 @Repository
 public interface ItemRepository extends JpaRepository<Item, UUID> {
 

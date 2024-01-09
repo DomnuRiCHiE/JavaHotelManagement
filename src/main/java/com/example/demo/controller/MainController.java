@@ -5,6 +5,10 @@ import com.example.demo.Factory.RepoTypes;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+/**
+ * Controller class for running main app business logic
+ */
+
 @RestController
 public class MainController {
     private final MainService service;

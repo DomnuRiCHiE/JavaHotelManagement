@@ -7,6 +7,10 @@ import com.example.demo.Service.Subject.ISubjectDeletedRoom;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+/**
+ * Service class for implementing Observer Design Pattern for Room entities
+ */
+
 @Service
 public class RoomService implements IObserverDeletedRoom, ISubjectDeletedRoom {
     private final RoomRepository repository;

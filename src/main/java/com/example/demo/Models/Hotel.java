@@ -6,6 +6,10 @@ import lombok.*;
 import java.util.HashSet;
 import java.util.Set;
 
+/**
+ * Entity class for representing hotels
+ */
+
 @Entity
 @Table(name = "hotel")
 @AllArgsConstructor

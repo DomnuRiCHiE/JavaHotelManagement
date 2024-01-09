@@ -8,6 +8,10 @@ import lombok.*;
 import java.util.HashSet;
 import java.util.Set;
 
+/**
+ * Entity for representing rooms in a hotel
+ */
+
 @Entity
 @Table(name = "room")
 @AllArgsConstructor

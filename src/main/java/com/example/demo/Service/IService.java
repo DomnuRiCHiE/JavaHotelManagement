@@ -5,6 +5,12 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
+/**
+ * Interface for a common service behaviour
+ * @param <E> the specific entity type
+ * @param <I> the specific entity type identifier
+ */
+
 public interface IService<E, I> {
     Optional<E> add(E object) throws Exception;
 

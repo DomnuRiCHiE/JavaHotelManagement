@@ -6,6 +6,10 @@ import org.springframework.stereotype.Repository;
 
 import java.util.UUID;
 
+/**
+ * interface for an Employee JpaRepository
+ */
+
 @Repository
 public interface EmployeeRepository extends JpaRepository<Employee, UUID> {
 

@@ -7,6 +7,10 @@ import lombok.*;
 import java.util.HashSet;
 import java.util.Set;
 
+/**
+ * Entity class for representing clients bookings
+ */
+
 @Entity
 @Table(name = "booking")
 @AllArgsConstructor

@@ -4,6 +4,9 @@ import com.example.demo.Models.Room;
 import com.example.demo.Service.Observer.IObserverDeletedRoom;
 
 import java.util.ArrayList;
+/**
+ * Interface for implementing Obsrver Pattern for Room Service
+ */
 
 public interface ISubjectDeletedRoom {
     ArrayList<IObserverDeletedRoom> observerList = new ArrayList<>();

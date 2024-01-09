@@ -8,6 +8,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.UUID;
 
+/**
+ * Controller class for implementing booking business logic
+ * Extends BaseController
+ */
+
 @RestController
 @RequestMapping("/booking")
 public class BookingController extends BaseController<Booking, UUID>{

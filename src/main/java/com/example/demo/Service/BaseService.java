@@ -7,6 +7,12 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ *
+ * @param <Entity> the entity type
+ * @param <IdType> the entity type identifier
+ */
+
 @Service
 @SuppressWarnings("SpringJavaInjectionPointsAutowiringInspection")
 public abstract class BaseService<Entity, IdType> implements IService<Entity, IdType>

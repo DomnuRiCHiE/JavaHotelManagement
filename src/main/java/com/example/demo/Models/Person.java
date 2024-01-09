@@ -4,6 +4,10 @@ import jakarta.persistence.*;
 import lombok.*;
 import java.util.Objects;
 
+/**
+ * Super class entity for client and employee
+ */
+
 @Entity
 @Table(name = "person")
 @AllArgsConstructor

@@ -6,6 +6,10 @@ import org.springframework.stereotype.Repository;
 
 import java.util.UUID;
 
+/**
+ * interface for a Booking JpaRepository
+ */
+
 @Repository
 public interface BookingRepository extends JpaRepository<Booking, UUID> {
 

@@ -8,6 +8,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.UUID;
 
+/**
+ * Controller class for implementing item business logic
+ * Extends BaseController
+ */
+
 @RestController
 @RequestMapping("/item")
 public class ItemController extends BaseController<Item, UUID> {
