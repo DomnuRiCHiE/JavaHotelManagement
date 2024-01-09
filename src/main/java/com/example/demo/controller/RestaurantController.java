@@ -1,4 +1,18 @@
 package com.example.demo.Controller;
 
-public class RestaurantController {
+import com.example.demo.Models.Restaurant;
+import com.example.demo.Service.BaseService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import java.util.UUID;
+
+@RestController
+@RequestMapping("/restaurant")
+public class RestaurantController extends BaseController<Restaurant, UUID> {
+    @Autowired
+    public RestaurantController(BaseService<Restaurant, UUID> service) {
+        super(service);
+    }
 }

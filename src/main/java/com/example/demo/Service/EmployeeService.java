@@ -1,4 +1,18 @@
 package com.example.demo.Service;
 
-public class EmployeeService {
+import com.example.demo.Models.Person;
+import com.example.demo.Repository.InMemory.IRepository;
+import com.example.demo.Repository.JPA.PersonRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.UUID;
+
+@Service
+@SuppressWarnings("SpringJavaInjectionPointsAutowiringInspection")
+public class EmployeeService extends PersonService<Person> {
+    @Autowired
+    public EmployeeService(IRepository<Person, UUID> repository, PersonRepository personRepository) {
+        super(repository, personRepository);
+    }
 }

@@ -6,5 +6,5 @@ import com.example.demo.Repository.InMemory.IRepository;
 import java.util.UUID;
 
 public interface IRepoFactory<Entity, ID> {
-    IRepository<Room, UUID> buildIRepository(RepoTypes type);
+    IRepository<Entity, ID> buildIRepository(RepoTypes type);
 }
