@@ -7,6 +7,10 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.Table;
 import lombok.*;
 
+/**
+ * Entity class representing food or meals for a restaurant
+ */
+
 @Entity
 @Table(name = "food")
 @Getter

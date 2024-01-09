@@ -8,6 +8,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.UUID;
 
+/**
+ * Controller class for implementing room business logic
+ * Extends BaseController
+ */
+
 @RestController
 @RequestMapping("/room")
 public class RoomController extends BaseController<Room, UUID> {

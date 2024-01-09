@@ -7,6 +7,10 @@ import jakarta.persistence.MappedSuperclass;
 
 import java.util.UUID;
 
+/**
+ * BaseEntity class to inherit ID
+ */
+
 @MappedSuperclass
 public class BaseEntity {
     @GeneratedValue(strategy = GenerationType.UUID)

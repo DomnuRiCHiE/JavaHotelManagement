@@ -10,6 +10,14 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
+/**
+ * BaseController class as a starting point for every controller class; REST controller
+ * This class provides common CRUD (Create, Read, Update, Delete) operations for the associated entity type
+ * Implements IController Interface
+ * @param <Type> the type of the specific entity class
+ * @param <IdType> the type for the specific entity class identifier
+ */
+
 @RestController
 public abstract class BaseController<Type, IdType> implements IController<Type, IdType>
 {

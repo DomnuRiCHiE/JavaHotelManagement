@@ -7,6 +7,10 @@ import lombok.*;
 import java.util.HashSet;
 import java.util.Set;
 
+/**
+ * Entity for representing restaurants
+ */
+
 @Entity
 @Table(name = "restaurant")
 @AllArgsConstructor

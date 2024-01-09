@@ -4,6 +4,10 @@ import jakarta.persistence.*;
 import lombok.*;
 import java.util.Objects;
 
+/**
+ * Entity class representing restaurant items as a base class for food or beverages
+ */
+
 @Entity
 @Table(name = "item")
 @AllArgsConstructor

@@ -11,6 +11,10 @@ import org.springframework.stereotype.Service;
 
 import java.util.UUID;
 
+/**
+ * Service class for implementing Observer Design Pattern for Client entities
+ */
+
 @Service
 @SuppressWarnings("SpringJavaInjectionPointsAutowiringInspection")
 public class ClientService extends PersonService<Person> implements IObserverDeletedClient, ISubjectDeletedClient {

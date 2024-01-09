@@ -19,7 +19,7 @@ public class RoomRepoFactory implements IRepoFactory<Room, UUID> {
     public RoomRepoFactory(ApplicationContext applicationContext) {
         this.applicationContext = applicationContext;
     }
-
+// DE ce doua clase care aparent fac acelasi lucru???
     @Override
     public IRepository<Room, UUID> buildIRepository(RepoTypes type) {
         return switch (type) {

@@ -5,5 +5,9 @@ import com.example.demo.Repository.InMemory.IRepository;
 
 import java.util.UUID;
 
+/**
+ * Interface for implementing room repository
+ */
+
 public interface IRoomRepository extends IRepository<Room, UUID>, ICustomRoomRepository {
 }

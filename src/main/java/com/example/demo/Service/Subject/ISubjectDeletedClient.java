@@ -4,6 +4,10 @@ import com.example.demo.Models.Client;
 import com.example.demo.Service.Observer.IObserverDeletedClient;
 
 import java.util.ArrayList;
+/**
+ * Interface for implementing Observer Pattern for Client Service
+ */
+
 
 public interface ISubjectDeletedClient {
     ArrayList<IObserverDeletedClient> observerList = new ArrayList<>();

@@ -8,6 +8,11 @@ import org.springframework.stereotype.Service;
 
 import java.util.UUID;
 
+/**
+ * Service for extracting Employee repository info
+ */
+
+
 @Service
 @SuppressWarnings("SpringJavaInjectionPointsAutowiringInspection")
 public class EmployeeService extends PersonService<Person> {

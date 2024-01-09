@@ -11,6 +11,11 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
+/**
+ * Proxy class for the RoomRepository repository
+ * ImplementsIRoomRepository interface and ProxyRepository abstract class
+ */
+
 @Component
 public class RoomProxyRepository extends ProxyRepository<Room, UUID> implements IRoomRepository {
     private ICustomRoomRepository customRepo;
@@ -21,7 +26,7 @@ public class RoomProxyRepository extends ProxyRepository<Room, UUID> implements 
         factory = applicationContext.getBean(RoomRepoFactory.class);
         selectJpa();
     }
-
+    @Override
     public void selectJpa() {
         currentRepo = factory.buildIRepository(RepoTypes.JPA);
         customRepo = factory.buildCustom(RepoTypes.JPA);

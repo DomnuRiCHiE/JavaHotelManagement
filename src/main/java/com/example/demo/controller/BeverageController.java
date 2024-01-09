@@ -9,6 +9,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.UUID;
 
+/**
+ * Rest controller for beverage business logic
+ * Extends BaseController super class
+ */
+
 @RestController
 @RequestMapping("/beverage")
 public class BeverageController extends BaseController<Beverage, UUID>{

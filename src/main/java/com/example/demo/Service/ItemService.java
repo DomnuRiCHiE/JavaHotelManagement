@@ -7,6 +7,10 @@ import com.example.demo.Service.Subject.ISubjectDeletedItem;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+/**
+ * Service class for implementing Observer Design Pattern for Item entities
+ */
+
 @Service
 public class ItemService implements IObserverDeletedItem, ISubjectDeletedItem {
     private final ItemRepository repository;

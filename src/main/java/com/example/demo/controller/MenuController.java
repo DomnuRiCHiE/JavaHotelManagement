@@ -8,6 +8,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.UUID;
 
+/**
+ * Controller class for implementing menu business logic
+ * Extends BaseController
+ */
+
+
 @RestController
 @RequestMapping("/menu")
 public class MenuController extends BaseController<Menu, UUID> {

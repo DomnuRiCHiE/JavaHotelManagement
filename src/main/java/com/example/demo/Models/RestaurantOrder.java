@@ -9,6 +9,10 @@ import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
+/**
+ * Entity class for storing restaurant orders made by clients of a hotel
+ */
+
 @Entity
 @Table(name = "restaurantOrder")
 @AllArgsConstructor

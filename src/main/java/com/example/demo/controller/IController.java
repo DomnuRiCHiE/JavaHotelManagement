@@ -8,6 +8,12 @@ import javax.swing.text.html.parser.Entity;
 import java.util.List;
 import java.util.UUID;
 
+/**
+ * Controller interface for implementing booking business logic
+ * Extends BaseController
+ * @param <Entity>
+ * @param <IdType>
+ */
 @Service
 public interface IController<Entity, IdType> {
     @PostMapping

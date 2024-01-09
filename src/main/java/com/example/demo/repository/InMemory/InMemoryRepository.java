@@ -7,6 +7,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * Abstract class for implementing IRepository interface
+ * @param <Entity> the type of entity
+ * @param <ID> the entity type identifier
+ */
+
 public abstract class InMemoryRepository<Entity, ID> implements IRepository<Entity, ID> {
     protected final HashMap<ID, Entity> map = new HashMap<>();
 

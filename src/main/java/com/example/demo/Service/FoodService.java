@@ -4,6 +4,10 @@ import com.example.demo.Repository.JPA.FoodRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+/**
+ * Service for extracting Food repository info
+ */
+
 @Service
 public class FoodService {
     private final FoodRepository repository;

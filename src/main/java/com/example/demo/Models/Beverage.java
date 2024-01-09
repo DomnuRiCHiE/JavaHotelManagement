@@ -5,6 +5,10 @@ import lombok.*;
 
 import java.util.UUID;
 
+/**
+ * Entity class for representing beverages to be stored in a restaurants menu
+ */
+
 @NoArgsConstructor
 @Getter
 @Setter
