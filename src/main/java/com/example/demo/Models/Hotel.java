@@ -22,27 +22,27 @@ public class Hotel extends BaseEntity{
     @Column
     private String restaurant;
 
-    @JsonIgnore
-    @OneToMany(mappedBy = "hotelBooking")
-    private Set<Booking> bookings = new HashSet<>();
+//    @JsonIgnore
+//    @OneToMany(mappedBy = "hotelBooking")
+//    private Set<Booking> bookings = new HashSet<>();
 
-    @JsonIgnore
-    @OneToMany(mappedBy = "bookedRooms")
-    private Set<Room> bookedRooms = new HashSet<>();
+//    @JsonIgnore
+//    @OneToMany(mappedBy = "bookedRooms")
+//    private Set<Room> bookedRooms = new HashSet<>();
 
-    @ManyToMany
-    @JoinTable(
-            name = "hotelClients",
-            joinColumns = @JoinColumn(name = "hotelID"),
-            inverseJoinColumns = @JoinColumn(name = "clientID")
-    )
-    private Set<Client> hotelClients = new HashSet<>();
-
-    @ManyToMany
-    @JoinTable(
-            name = "hotelEmployees",
-            joinColumns = @JoinColumn(name = "hotelID"),
-            inverseJoinColumns = @JoinColumn(name = "employeeID")
-    )
-    private Set<Employee> hotelEmployees = new HashSet<>();
+//    @ManyToMany
+//    @JoinTable(
+//            name = "hotelClients",
+//            joinColumns = @JoinColumn(name = "hotelID"),
+//            inverseJoinColumns = @JoinColumn(name = "clientID")
+//    )
+//    private Set<Client> hotelClients = new HashSet<>();
+//
+//    @ManyToMany
+//    @JoinTable(
+//            name = "hotelEmployees",
+//            joinColumns = @JoinColumn(name = "hotelID"),
+//            inverseJoinColumns = @JoinColumn(name = "employeeID")
+//    )
+//    private Set<Employee> hotelEmployees = new HashSet<>();
 }
